@@ -1,130 +1,54 @@
-import Loadable from 'react-loadable';
+import { lazy } from 'react';
 
+/**
+ * Lazily loaded shared components. Each one is a separate chunk, so they must
+ * be rendered inside a <Suspense> boundary (see RootLayout / PageTransition).
+ */
 function MyComponent() {
-  const Heading = Loadable({
-    loader: () => import('./Heading').then((module) => module.default),
-    loading: () => null,
-  });
-  const TopMenuNavigation = Loadable({
-    loader: () =>
-      import('./navbar/TopNavigation').then((module) => module.default),
-    loading: () => null,
-  });
-  const BottomNavigation = Loadable({
-    loader: () =>
-      import('./navbar/BottomNavigation').then((module) => module.default),
-    loading: () => null,
-  });
-  const ButtonActionDefault = Loadable({
-    loader: () =>
-      import('./button/ButtonActionDefault').then((module) => module.default),
-    loading: () => null,
-  });
-  const ButtonActionDownload = Loadable({
-    loader: () =>
-      import('./button/ButtonActionDownload').then((module) => module.default),
-    loading: () => null,
-  });
-  const ButtonActionRedirect = Loadable({
-    loader: () =>
-      import('./button/ButtonActionRedirect').then((module) => module.default),
-    loading: () => null,
-  });
-  const ButtonAction = Loadable({
-    loader: () =>
-      import('./button/ButtonAction').then((module) => module.default),
-    loading: () => null,
-  });
+  const Heading = lazy(() => import('./Heading'));
+  const TopMenuNavigation = lazy(() => import('./navbar/TopNavigation'));
+  const BottomNavigation = lazy(() => import('./navbar/BottomNavigation'));
+  const ButtonActionDefault = lazy(
+    () => import('./button/ButtonActionDefault')
+  );
+  const ButtonActionDownload = lazy(
+    () => import('./button/ButtonActionDownload')
+  );
+  const ButtonActionRedirect = lazy(
+    () => import('./button/ButtonActionRedirect')
+  );
+  const ButtonAction = lazy(() => import('./button/ButtonAction'));
 
-  const ProfileHeading = Loadable({
-    loader: () =>
-      import('../v1/profile/ProfileHeading').then((module) => module.default),
-    loading: () => null,
-  });
-  const ProfileInfo = Loadable({
-    loader: () =>
-      import('../v1/profile/ProfileInfo').then((module) => module.default),
-    loading: () => null,
-  });
-  const ProfileInfoAboutMe = Loadable({
-    loader: () =>
-      import('../v1/profile/ProfileInfoAboutMe').then(
-        (module) => module.default
-      ),
-    loading: () => null,
-  });
-  const ProfileSummary = Loadable({
-    loader: () =>
-      import('../v1/profile/ProfileSummary').then((module) => module.default),
-    loading: () => null,
-  });
-  const EducationItem = Loadable({
-    loader: () =>
-      import('../v1/education/EducationItem').then((module) => module.default),
-    loading: () => null,
-  });
-  const EducationItemList = Loadable({
-    loader: () =>
-      import('../v1/education/EducationItemList').then(
-        (module) => module.default
-      ),
-    loading: () => null,
-  });
-  const ExperienceItem = Loadable({
-    loader: () =>
-      import('../v1/experience/ExperienceItem').then(
-        (module) => module.default
-      ),
-    loading: () => null,
-  });
-  const ExperienceListItem = Loadable({
-    loader: () =>
-      import('../v1/experience/ExperienceListItem').then(
-        (module) => module.default
-      ),
-    loading: () => null,
-  });
-  const ProjectItem = Loadable({
-    loader: () =>
-      import('../v1/portofolio/ProjectItem').then((module) => module.default),
-    loading: () => null,
-  });
-  const ProjectListItem = Loadable({
-    loader: () =>
-      import('../v1/portofolio/ProjectListItem').then(
-        (module) => module.default
-      ),
-    loading: () => null,
-  });
-  const SertifikasiItem = Loadable({
-    loader: () =>
-      import('../v1/certificate/SertifikasiItem').then(
-        (module) => module.default
-      ),
-    loading: () => null,
-  });
-  const SertifikasiListItem = Loadable({
-    loader: () =>
-      import('../v1/certificate/SertifikasiListItem').then(
-        (module) => module.default
-      ),
-    loading: () => null,
-  });
-
-  const ProjectSearchInput = Loadable({
-    loader: () =>
-      import('../v1/portofolio/ProjectSearchInput').then(
-        (module) => module.default
-      ),
-    loading: () => null,
-  });
-  const ProjectSearchEmpty = Loadable({
-    loader: () =>
-      import('../v1/portofolio/ProjectSearchEmpty').then(
-        (module) => module.default
-      ),
-    loading: () => null,
-  });
+  const ProfileHeading = lazy(() => import('../v1/profile/ProfileHeading'));
+  const ProfileInfo = lazy(() => import('../v1/profile/ProfileInfo'));
+  const ProfileInfoAboutMe = lazy(
+    () => import('../v1/profile/ProfileInfoAboutMe')
+  );
+  const ProfileSummary = lazy(() => import('../v1/profile/ProfileSummary'));
+  const EducationItem = lazy(() => import('../v1/education/EducationItem'));
+  const EducationItemList = lazy(
+    () => import('../v1/education/EducationItemList')
+  );
+  const ExperienceItem = lazy(() => import('../v1/experience/ExperienceItem'));
+  const ExperienceListItem = lazy(
+    () => import('../v1/experience/ExperienceListItem')
+  );
+  const ProjectItem = lazy(() => import('../v1/portofolio/ProjectItem'));
+  const ProjectListItem = lazy(
+    () => import('../v1/portofolio/ProjectListItem')
+  );
+  const SertifikasiItem = lazy(
+    () => import('../v1/certificate/SertifikasiItem')
+  );
+  const SertifikasiListItem = lazy(
+    () => import('../v1/certificate/SertifikasiListItem')
+  );
+  const ProjectSearchInput = lazy(
+    () => import('../v1/portofolio/ProjectSearchInput')
+  );
+  const ProjectSearchEmpty = lazy(
+    () => import('../v1/portofolio/ProjectSearchEmpty')
+  );
 
   return {
     Heading,

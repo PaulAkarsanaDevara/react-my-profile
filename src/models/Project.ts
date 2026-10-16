@@ -18,7 +18,7 @@ const projects: Project[] = [
     startDate: 'Feb 2024',
     endDate: 'Feb 2024',
     description:
-      'Proyek Deploy Aplikasi Item App dengan Docker Compose adalah proyek kedua dari pembelajaran Belajar Membangun Arsitektur Microservices. Proyek ini Menggunakan Starter Project (Karsa Jobs), Membuat Script untuk Build dan Push Docker Image dan Deploy Aplikasi ke Kubernetes.',
+      'Proyek Deploy Aplikasi Karsa Jobs dengan Kubernetes adalah proyek kedua dari pembelajaran Belajar Membangun Arsitektur Microservices. Proyek ini Menggunakan Starter Project (Karsa Jobs), Membuat Script untuk Build dan Push Docker Image dan Deploy Aplikasi ke Kubernetes.',
     links: 'https://github.com/FarhannDev/a433-microservices',
     type: 'DevOps',
     insertDate: '2024-08-23T08:02:49.926Z',

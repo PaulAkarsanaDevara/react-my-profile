@@ -2,6 +2,7 @@ import { Link, isRouteErrorResponse, useRouteError } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaArrowLeft } from 'react-icons/fa';
 import AmbientBackground from './motion/AmbientBackground';
+import HTML from './HTML';
 
 export default function ErrorPage() {
   const error = useRouteError();
@@ -9,6 +10,11 @@ export default function ErrorPage() {
 
   return (
     <div id="error-page" className="error-page">
+      <HTML
+        title={notFound ? '404 - Farhan' : 'Error - Farhan'}
+        description="Halaman tidak ditemukan"
+        keywords="Portofolio, Farhan"
+      />
       <AmbientBackground />
       <motion.div
         className="error-page__content"

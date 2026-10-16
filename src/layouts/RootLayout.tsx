@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Container } from 'react-bootstrap';
 import { MotionConfig } from 'framer-motion';
 import { MyComponentInstance } from '../components/ui/shared/MyComponent';
@@ -11,7 +11,9 @@ const RootLayout: React.FC = () => {
     <MotionConfig reducedMotion="user">
       <AmbientBackground />
       <ScrollProgress />
-      <MyComponentInstance.TopMenuNavigation />
+      <Suspense fallback={null}>
+        <MyComponentInstance.TopMenuNavigation />
+      </Suspense>
 
       {/* Rendered Content Start */}
       <main className="main-content">
@@ -21,7 +23,9 @@ const RootLayout: React.FC = () => {
       </main>
       {/* Rendered Content End */}
 
-      <MyComponentInstance.BottomNavigation />
+      <Suspense fallback={null}>
+        <MyComponentInstance.BottomNavigation />
+      </Suspense>
     </MotionConfig>
   );
 };

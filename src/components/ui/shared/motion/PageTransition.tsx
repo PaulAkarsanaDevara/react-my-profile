@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useLocation, useOutlet } from 'react-router-dom';
 
@@ -24,7 +24,7 @@ const PageTransition: React.FC = () => {
         exit={{ opacity: 0, y: -16, filter: 'blur(6px)' }}
         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
       >
-        {outlet}
+        <Suspense fallback={null}>{outlet}</Suspense>
       </motion.div>
     </AnimatePresence>
   );

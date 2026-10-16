@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 
 assets/vendors*
+# Environment
+.env
+.env.local

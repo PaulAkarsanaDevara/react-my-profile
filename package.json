@@ -19,7 +19,6 @@
     "bootstrap": "^5.3.3",
     "emailjs-com": "^3.2.0",
     "framer-motion": "^11.18.2",
-    "nanoid": "^5.0.7",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.4",
     "react-dom": "^18.2.0",
@@ -27,10 +26,8 @@
     "react-hook-form": "^7.53.0",
     "react-icons": "^5.2.1",
     "react-lazy-load-image-component": "^1.6.2",
-    "react-loadable": "^5.5.0",
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.26.0",
-    "save": "^2.9.0",
     "sweetalert2": "^11.13.1"
   },
   "devDependencies": {
@@ -38,7 +35,6 @@
     "@types/react-dom": "^18.2.22",
     "@types/react-helmet": "^6.1.11",
     "@types/react-lazy-load-image-component": "^1.6.4",
-    "@types/react-loadable": "^5.5.11",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
     "@vitejs/plugin-react-swc": "^3.5.0",
