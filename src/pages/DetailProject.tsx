@@ -1,20 +1,27 @@
 import { Link, useParams } from 'react-router-dom';
-import { FaArrowLeft, FaExternalLinkAlt } from 'react-icons/fa';
+import {
+  FaArrowLeft,
+  FaArrowRight,
+  FaExternalLinkAlt,
+  FaGithub,
+} from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import projects from '../models/Project';
 import { postedAt } from '../utils/formattedDate';
 import { MyComponentInstance } from '../components/ui/shared/MyComponent';
 import Reveal from '../components/ui/shared/motion/Reveal';
 import HTML from '../components/ui/shared/HTML';
+import techIcons from '../components/ui/v1/skills/techIcons';
 
 const FALLBACK_IMAGE = '/images/13429_ILL_DevOpsLoop.webp';
+
+const isRepo = (url: string) => /^https?:\/\/(www\.)?github\.com\//i.test(url);
 
 const DetailProject = () => {
   const { id } = useParams();
 
-  const detailProject: Project | undefined = projects.find(
-    (project) => project.id === id
-  );
+  const index = projects.findIndex((project) => project.id === id);
+  const detailProject: Project | undefined = projects[index];
 
   if (!detailProject) {
     return (
@@ -36,6 +43,10 @@ const DetailProject = () => {
         project.id !== detailProject.id && project.type === detailProject.type
     )
     .slice(0, 3);
+
+  const previous = projects[index - 1];
+  const next = projects[index + 1];
+  const repo = detailProject.links && isRepo(detailProject.links);
 
   return (
     <section className="detailproject-section pb-5">
@@ -90,6 +101,22 @@ const DetailProject = () => {
               'Deskripsi proyek belum tersedia. Buka proyeknya untuk melihat detail lengkapnya.'}
           </div>
 
+          {detailProject.tech && detailProject.tech.length > 0 && (
+            <div className="detail-project__tech">
+              <div className="detail-project__tech-label">Tech stack</div>
+              <ul className="service-card__tech">
+                {detailProject.tech.map((name) => {
+                  const icon = techIcons[name];
+                  return (
+                    <li key={name}>
+                      {icon && <icon.Icon size={14} color={icon.color} />} {name}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          )}
+
           {detailProject.links && (
             <div className="detail-project__actions">
               <a
@@ -98,21 +125,60 @@ const DetailProject = () => {
                 rel="noreferrer"
                 className="resume-btn resume-btn--solid"
               >
-                Tampilkan Proyek <FaExternalLinkAlt size={12} />
+                {repo ? (
+                  <>
+                    <FaGithub size={15} /> Lihat Kode
+                  </>
+                ) : (
+                  <>
+                    Buka Demo <FaExternalLinkAlt size={12} />
+                  </>
+                )}
               </a>
             </div>
           )}
         </motion.div>
       </div>
 
+      <nav className="detail-pager" aria-label="Navigasi proyek">
+        {previous ? (
+          <Link
+            to={`/porto/${previous.id}/project`}
+            className="detail-pager__link"
+          >
+            <span className="detail-pager__dir">
+              <FaArrowLeft size={11} /> Sebelumnya
+            </span>
+            <span className="detail-pager__name">{previous.name}</span>
+          </Link>
+        ) : (
+          <span />
+        )}
+        {next ? (
+          <Link
+            to={`/porto/${next.id}/project`}
+            className="detail-pager__link detail-pager__link--next"
+          >
+            <span className="detail-pager__dir">
+              Berikutnya <FaArrowRight size={11} />
+            </span>
+            <span className="detail-pager__name">{next.name}</span>
+          </Link>
+        ) : (
+          <span />
+        )}
+      </nav>
+
       {related.length > 0 && (
         <div className="detail-related">
-          <h2 className="resume-item__heading">Proyek {detailProject.type} Lainnya</h2>
+          <h2 className="resume-item__heading">
+            Proyek {detailProject.type} Lainnya
+          </h2>
           <div className="portofolio-list">
-            {related.map((project, index) => (
+            {related.map((project, relatedIndex) => (
               <Reveal
                 key={project.id}
-                delay={index * 0.08}
+                delay={relatedIndex * 0.08}
                 className="portofolio-list__cell"
               >
                 <MyComponentInstance.ProjectItem {...project} />

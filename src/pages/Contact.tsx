@@ -30,8 +30,8 @@ const Contact: React.FC = () => {
   return (
     <>
       <HTML
-        title="Contact  - Farhan"
-        description="Daftar Pengalaman"
+        title="Contact - Farhan"
+        description="Get in touch with Farhan for project collaboration, questions or opportunities."
         keywords="Portofolio, Farhan, Farhan Portofolio"
       />
       <div className="contacts-container">

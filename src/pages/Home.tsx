@@ -5,19 +5,18 @@ import TechMarquee from '../components/ui/v1/home/TechMarquee';
 import FeaturedProjects from '../components/ui/v1/home/FeaturedProjects';
 import RecentExperience from '../components/ui/v1/home/RecentExperience';
 import HomeCta from '../components/ui/v1/home/HomeCta';
-import '../styles/resume.css';
 
 const Home = () => {
   return (
     <>
       <HTML
         title="Home - Farhan"
-        description="Daftar Pengalaman"
+        description="Portfolio of Farhan, a Full Stack Developer: projects, experience, skills and certifications across frontend, backend and DevOps."
         keywords="Portofolio, Farhan, Farhan Portofolio"
       />
       <section className="home-container">
         <MyComponentInstance.ProfileInfo
-          image="/images/profile.png"
+          image="/images/profile.webp"
           name="Farhan"
           jobs="Full Stack Developer"
         />

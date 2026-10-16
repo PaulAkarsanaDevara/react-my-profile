@@ -1,9 +1,9 @@
-import { useRef, useState } from 'react';
+import { Suspense, lazy, useRef, useState } from 'react';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import certificates from '../../../../models/Certificate';
 import SertifikasiItem from './SertifikasiItem';
 import { Modal } from 'react-bootstrap';
-import PdfPreview from '../../shared/PdfPreview';
+const PdfPreview = lazy(() => import('../../shared/PdfPreview'));
 
 const SertifikasiListItem = () => {
   const [show, setShow] = useState(false);
@@ -78,7 +78,9 @@ const SertifikasiListItem = () => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <PdfPreview fileUrl={getSertifikasiPrev?.pdfPreview} scale={1.0} />
+          <Suspense fallback={<div className="resume-online-loading">Memuat dokumen...</div>}>
+            <PdfPreview fileUrl={getSertifikasiPrev?.pdfPreview} scale={1.0} />
+          </Suspense>
         </Modal.Body>
       </Modal>
     </>

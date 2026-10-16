@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
 import { FaArrowLeft, FaDownload } from 'react-icons/fa';
 import { MyComponentInstance } from '../components/ui/shared/MyComponent';
-import PdfPreview from '../components/ui/shared/PdfPreview';
 import HTML from '../components/ui/shared/HTML';
 import Reveal from '../components/ui/shared/motion/Reveal';
-import '../styles/resume.css';
+
+const PdfPreview = lazy(() => import('../components/ui/shared/PdfPreview'));
 
 const CV_URL = '/uploads/CV FARHAN EN.pdf';
 
@@ -13,7 +14,7 @@ const ResumeOnline = () => {
     <>
       <HTML
         title="Online Resume - Farhan"
-        description="Resume online Farhan"
+        description="Read and download the online resume (CV) of Farhan, Full Stack Developer."
         keywords="Resume, CV, Farhan, Farhan Portofolio"
       />
       <div className="resume-online-container">
@@ -37,7 +38,9 @@ const ResumeOnline = () => {
 
         <Reveal>
           <div className="resume-online-frame">
-            <PdfPreview fileUrl={CV_URL} scale={1.5} />
+            <Suspense fallback={<div className="resume-online-loading">Memuat dokumen...</div>}>
+              <PdfPreview fileUrl={CV_URL} scale={1.5} />
+            </Suspense>
           </div>
         </Reveal>
       </div>

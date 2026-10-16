@@ -5,7 +5,6 @@ import { MyComponentInstance } from '../components/ui/shared/MyComponent';
 import Reveal from '../components/ui/shared/motion/Reveal';
 import education from '../models/Education';
 import { experience } from '../models/Experience';
-import '../styles/resume.css';
 
 const gpa = education.find((edu) => edu.ipk !== '')?.ipk;
 
@@ -20,7 +19,7 @@ const Resume = () => {
     <>
       <HTML
         title="Resume - Farhan"
-        description="Daftar Pengalaman"
+        description="Resume of Farhan: work experience, internships and education as a Full Stack Developer."
         keywords="Portofolio, Farhan, Farhan Portofolio"
       />
 

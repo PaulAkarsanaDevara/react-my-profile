@@ -39,7 +39,9 @@ const Project: React.FC = () => {
       projects.filter(
         (project) =>
           (type === ALL || project.type === type) &&
-          project.name.toLowerCase().includes(keyword.toLowerCase())
+          [project.name, ...(project.tech ?? [])].some((text) =>
+            text.toLowerCase().includes(keyword.toLowerCase())
+          )
       ),
     [keyword, type]
   );
@@ -47,8 +49,8 @@ const Project: React.FC = () => {
   return (
     <>
       <HTML
-        title="Portofolio - Farhan"
-        description="Daftar Pengalaman"
+        title="Portfolio - Farhan"
+        description="Selected frontend and DevOps projects by Farhan, built with React, Vue, Flutter, Docker, Jenkins and Kubernetes."
         keywords="Portofolio, Farhan, Farhan Portofolio"
       />
 
@@ -61,7 +63,7 @@ const Project: React.FC = () => {
         <hr className="text-secondary" />
 
         <MyComponentInstance.ProjectSearchInput
-          placeholder="Cari proyek..."
+          placeholder="Cari proyek atau teknologi..."
           keyword={keyword}
           keywordChange={(value) => updateParams({ search: value })}
         />

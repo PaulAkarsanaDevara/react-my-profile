@@ -278,3 +278,11 @@
     font-size: 24px;
   }
 }
+
+.resume-online-loading {
+  display: grid;
+  place-items: center;
+  min-height: 240px;
+  color: var(--text-muted);
+  font-size: 14px;
+}

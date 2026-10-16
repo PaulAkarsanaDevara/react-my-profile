@@ -1,6 +1,7 @@
 const projects: Project[] = [
   {
     id: 'proyek-implementasi-asynchronous-communication-pada-aplikasi',
+    tech: ['Docker', 'Docker Compose', 'Microservices'],
     name: 'Proyek Implementasi Asynchronous Communication pada Aplikasi E-Commerce App',
     coverImage: '/images/13429_ILL_DevOpsLoop.webp',
     startDate: 'Feb 2024',
@@ -13,6 +14,7 @@ const projects: Project[] = [
   },
   {
     id: 'proyek-deploy-aplikasi-karsa-jobs-dengan-kubernetes',
+    tech: ['Docker', 'Kubernetes', 'Microservices'],
     name: 'Proyek Deploy Aplikasi Karsa Jobs dengan Kubernetes',
     coverImage: '/images/13429_ILL_DevOpsLoop.webp',
     startDate: 'Feb 2024',
@@ -25,6 +27,7 @@ const projects: Project[] = [
   },
   {
     id: 'proyek-deploy-aplikasi-item-app-dengan-docker-compose',
+    tech: ['Docker', 'Docker Compose'],
     name: 'Proyek Deploy Aplikasi Item App dengan Docker Compose',
     coverImage: '/images/13429_ILL_DevOpsLoop.webp',
     startDate: 'Feb 2024',
@@ -37,6 +40,7 @@ const projects: Project[] = [
   },
   {
     id: 'proyek-membangun-ci-cd-pipeline-dengan-jenkins',
+    tech: ['Jenkins', 'CI/CD', 'Prometheus', 'Grafana'],
     name: 'Proyek Membangun CI/CD Pipeline dengan Jenkins',
     coverImage: '/images/13429_ILL_DevOpsLoop.webp',
     startDate: 'Feb 2024',
@@ -49,6 +53,7 @@ const projects: Project[] = [
   },
   {
     id: 'proyek-membangun-ci-cd-pipeline-dengan-jenkins-2',
+    tech: ['Jenkins', 'CI/CD', 'React.JS'],
     name: 'Proyek Membangun CI/CD Pipeline dengan Jenkins',
     coverImage: '/images/13429_ILL_DevOpsLoop.webp',
     startDate: 'Feb 2024',
@@ -61,6 +66,7 @@ const projects: Project[] = [
   },
   {
     id: 'proyek-konfigurasi-ssh-server',
+    tech: ['Linux', 'SSH'],
     name: 'Proyek Konfigurasi SSH Server',
     coverImage: '/images/13429_ILL_DevOpsLoop.webp',
     startDate: 'Feb 2024',
@@ -73,6 +79,7 @@ const projects: Project[] = [
   },
   {
     id: 'proyek-shell-scripting',
+    tech: ['Linux', 'Shell Script'],
     name: 'Proyek Shell Scripting',
     coverImage: '/images/13429_ILL_DevOpsLoop.webp',
     startDate: 'Feb 2024',
@@ -85,8 +92,9 @@ const projects: Project[] = [
   },
   {
     id: 'proyek-mendesain-ulang-tampilan-ui-website-smartnation-mengg',
+    tech: ['React.JS'],
     name: 'Proyek Mendesain Ulang Tampilan UI Website Smartnation Menggunakan React',
-    coverImage: '/images/proyek_smarrtnation.png',
+    coverImage: '/images/proyek_smarrtnation.webp',
     startDate: 'Feb 2024',
     endDate: 'Feb 2024',
     description: '',
@@ -96,6 +104,7 @@ const projects: Project[] = [
   },
   {
     id: 'proyek-katalog-restoran-pwa-testing-and-optimized',
+    tech: ['Javascript', 'PWA', 'Testing'],
     name: 'Proyek  Katalog Restoran PWA + Testing and Optimized',
     coverImage: '',
     startDate: 'Feb 2024',
@@ -107,8 +116,9 @@ const projects: Project[] = [
   },
   {
     id: 'proyek-membangun-aplikasi-react-dengan-redux',
+    tech: ['React.JS', 'Redux'],
     name: 'Proyek: Membangun Aplikasi React dengan Redux',
-    coverImage: '/images/proyek_forum_discussion.png',
+    coverImage: '/images/proyek_forum_discussion.webp',
     startDate: 'Jan 2024',
     endDate: 'Jan 2024',
     description:
@@ -119,8 +129,9 @@ const projects: Project[] = [
   },
   {
     id: 'proyek-menerapkan-automation-testing-dan-ci-cd-pada-aplikasi',
+    tech: ['React.JS', 'Redux', 'Testing', 'CI/CD'],
     name: 'Proyek Menerapkan Automation Testing dan CI/CD pada Aplikasi Forum Diskusi',
-    coverImage: '/images/proyek_forum_discussion.png',
+    coverImage: '/images/proyek_forum_discussion.webp',
     startDate: 'Jan 2024',
     endDate: 'Jan 2024',
     description:
@@ -131,8 +142,9 @@ const projects: Project[] = [
   },
   {
     id: 'proyek-implementasi-redux-pada-aplikasi-sosial-media-open-sp',
+    tech: ['React.JS', 'Redux'],
     name: 'Proyek Implementasi Redux pada Aplikasi Sosial Media Open Space (Twitter Like App)',
-    coverImage: '/images/proyek_open_space.png',
+    coverImage: '/images/proyek_open_space.webp',
     startDate: 'Jan 2024',
     endDate: 'Jan 2024',
     description:
@@ -143,8 +155,9 @@ const projects: Project[] = [
   },
   {
     id: 'proyek-membangun-aplikasi-indonesia-berita-app-menggunakan-r',
+    tech: ['Javascript', 'PWA'],
     name: 'Proyek Membangun Aplikasi Indonesia Berita App Menggunakan React',
-    coverImage: '/images/proyek_indonesia_berita.png',
+    coverImage: '/images/proyek_indonesia_berita.webp',
     startDate: 'Jan 2024',
     endDate: 'Jan 2024',
     links: 'https://23id-berita.vercel.app',
@@ -155,8 +168,9 @@ const projects: Project[] = [
   },
   {
     id: 'proyek-membangun-aplikasi-movie-catalogue-app',
+    tech: ['Javascript', 'PWA', 'TMDB API'],
     name: 'Proyek Membangun Aplikasi Movie Catalogue App',
-    coverImage: '/images/proyek_movie_catalogue.png',
+    coverImage: '/images/proyek_movie_catalogue.webp',
     startDate: 'Jan 2024',
     endDate: 'Jan 2024',
     links: 'https://mymovies-catalogue.netlify.app/#/',
@@ -167,8 +181,9 @@ const projects: Project[] = [
   },
   {
     id: 'proyek-membangun-aplikasi-football-club-finder-app',
+    tech: ['Javascript'],
     name: 'Proyek Membangun Aplikasi Football Club Finder App',
-    coverImage: '/images/proyek_footbal_club_finder.png',
+    coverImage: '/images/proyek_footbal_club_finder.webp',
     startDate: 'Jan 2024',
     endDate: 'Jan 2024',
     links: 'https://mymovies-catalogue.netlify.app/#/',
@@ -180,8 +195,9 @@ const projects: Project[] = [
   },
   {
     id: 'proyek-membangun-aplikasi-catatan-menggunakan-react',
+    tech: ['React.JS'],
     name: 'Proyek Membangun Aplikasi Catatan Menggunakan React',
-    coverImage: '/images/proyek_personalnotes.png',
+    coverImage: '/images/proyek_personalnotes.webp',
     startDate: 'Jan 2024',
     endDate: 'Jan 2024',
     links: 'https://23mynote.vercel.app/note',
@@ -192,8 +208,9 @@ const projects: Project[] = [
   },
   {
     id: 'proyek-membangun-aplikasi-todolist-app-menggunakan-vue',
+    tech: ['Vue.JS'],
     name: 'Proyek Membangun Aplikasi TodoList App Menggunakan Vue',
-    coverImage: '/images/proyek_todolist.png',
+    coverImage: '/images/proyek_todolist.webp',
     startDate: 'Jan 2024',
     endDate: 'Jan 2024',
     links: 'https://23mytodo.vercel.app/',
@@ -203,8 +220,9 @@ const projects: Project[] = [
   },
   {
     id: 'proyek-membangun-aplikasi-lafood-app-menggunakan-flutter',
+    tech: ['Flutter', 'Dart'],
     name: 'Proyek Membangun Aplikasi Lafood App Menggunakan Flutter',
-    coverImage: '/images/proyek_todolist.png',
+    coverImage: '/images/proyek_todolist.webp',
     startDate: 'Jan 2024',
     endDate: 'Jan 2024',
     links: 'https://github.com/FarhannDev/flutter_lafood_app',

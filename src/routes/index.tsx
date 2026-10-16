@@ -1,13 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom';
 import RootLayout from '../layouts/RootLayout';
 import ErrorPage from '../components/ui/shared/error-page';
-import Home from '../pages/Home';
-import About from '../pages/About';
-import Project from '../pages/Project';
-import DetailProject from '../pages/DetailProject';
-import Contact from '../pages/Contact';
-import Resume from '../pages/Resume';
-import ResumeOnline from '../pages/ResumeOnline';
+
+/** Each page is its own chunk, loaded when the route is first visited. */
+const page = (load: () => Promise<{ default: React.ComponentType }>) => ({
+  lazy: async () => ({ Component: (await load()).default }),
+});
 
 const router = createBrowserRouter([
   {
@@ -15,34 +13,18 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
-      {
-        index: true,
-        element: <Home />,
-      },
-
-      {
-        path: '/me',
-        element: <About />,
-      },
-      {
-        path: '/resume',
-        element: <Resume />,
-      },
-      {
-        path: '/portfolio',
-        element: <Project />,
-      },
+      { index: true, ...page(() => import('../pages/Home')) },
+      { path: '/me', ...page(() => import('../pages/About')) },
+      { path: '/resume', ...page(() => import('../pages/Resume')) },
+      { path: '/portfolio', ...page(() => import('../pages/Project')) },
       {
         path: '/porto/:id/project',
-        element: <DetailProject />,
+        ...page(() => import('../pages/DetailProject')),
       },
-      {
-        path: '/contact',
-        element: <Contact />,
-      },
+      { path: '/contact', ...page(() => import('../pages/Contact')) },
       {
         path: '/resume-online',
-        element: <ResumeOnline />,
+        ...page(() => import('../pages/ResumeOnline')),
       },
     ],
   },

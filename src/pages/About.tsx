@@ -6,20 +6,19 @@ import SkillsTabs from '../components/ui/v1/about/SkillsTabs';
 import Journey from '../components/ui/v1/about/Journey';
 import SectionHead from '../components/ui/v1/home/SectionHead';
 import HomeCta from '../components/ui/v1/home/HomeCta';
-import '../styles/resume.css';
 
 const About = () => {
   return (
     <>
       <HTML
         title="About Me - Farhan"
-        description="Daftar Pengalaman"
+        description="About Farhan: an Informatics graduate and Full Stack Developer with skills in React, Laravel and DevOps, plus certifications and career journey."
         keywords="Portofolio, Farhan, Farhan Portofolio"
       />
       <div className="about-container">
         <div className="about-profile-container">
           <MyComponentInstance.ProfileInfo
-            image="/images/profile.png"
+            image="/images/profile.webp"
             name="Farhan"
             jobs="Full Stack Developer"
           />

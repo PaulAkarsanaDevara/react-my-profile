@@ -18,6 +18,8 @@ interface Project {
   type: string;
   coverImage: string;
   insertDate: string;
+  /** Technologies used; names match skillIcons / techIcons keys. */
+  tech?: string[];
 }
 
 interface Education {
