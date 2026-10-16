@@ -1166,3 +1166,60 @@ textarea:focus-visible {
     right: 14px;
   }
 }
+
+/* ---------- Cursor spotlight on cards (fine pointers only) ---------- */
+@media (hover: hover) and (pointer: fine) {
+  .portofolio-list__items,
+  .skills-items,
+  .service-card,
+  .quick-facts__item,
+  .timeline-card__body,
+  .contact-channel,
+  .contact-card,
+  .resume-stats__item,
+  .detail-pager__link,
+  .profile-summary,
+  .home-cta {
+    position: relative;
+  }
+
+  .portofolio-list__items::after,
+  .skills-items::after,
+  .service-card::after,
+  .quick-facts__item::after,
+  .timeline-card__body::after,
+  .contact-channel::after,
+  .contact-card::after,
+  .resume-stats__item::after,
+  .detail-pager__link::after,
+  .profile-summary::after,
+  .home-cta::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(
+      240px circle at var(--mx, 50%) var(--my, 50%),
+      rgba(124, 108, 246, 0.14),
+      transparent 70%
+    );
+    transition: opacity 250ms ease;
+  }
+
+  .portofolio-list__items:hover::after,
+  .skills-items:hover::after,
+  .service-card:hover::after,
+  .quick-facts__item:hover::after,
+  .timeline-card__body:hover::after,
+  .contact-channel:hover::after,
+  .contact-card:hover::after,
+  .resume-stats__item:hover::after,
+  .detail-pager__link:hover::after,
+  .profile-summary:hover::after,
+  .home-cta:hover::after {
+    opacity: 1;
+  }
+}

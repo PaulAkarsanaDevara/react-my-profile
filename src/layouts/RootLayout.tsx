@@ -6,9 +6,12 @@ import AmbientBackground from '../components/ui/shared/motion/AmbientBackground'
 import PageTransition from '../components/ui/shared/motion/PageTransition';
 import ScrollProgress from '../components/ui/shared/motion/ScrollProgress';
 import MobileTabBar from '../components/ui/shared/navbar/MobileTabBar';
+import { useSpotlight } from '../hooks/useSpotlight';
 import BackToTop from '../components/ui/shared/motion/BackToTop';
 
 const RootLayout: React.FC = () => {
+  useSpotlight();
+
   return (
     <MotionConfig reducedMotion="user">
       <a className="skip-link" href="#main-content">
