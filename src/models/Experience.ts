@@ -51,8 +51,8 @@ const experience: Experience[] = [
   - Outside-prescription invoices: fixed closing and duplicate-item bugs, and added a guard for prescriptions edited after the invoice was opened.
   - Added an accounting role that only sees the pre-billing button on non-patient invoices, per-branch cash selection, an option to show or hide the staff signature on bills, and LOC document upload in the cashier screens.
   - Fixed billing calculation bugs: returned drugs not deducted, group tariff discounts not applied, wrong admin fees, and refunds on fully paid invoices. Also fixed SQL injection issues in the invoice controllers.
-- Security: added forced password change on first login and a limit on active sessions per user.
-- Wrote automated tests for some lab, radiology and invoice features.`,
+- Security: added a forced password change on first login, configurable per hospital.
+- Wrote automated tests for the laboratory, radiology and PACS Thena features.`,
   },
   {
     company: 'PT Winni Code Garuda Indonesia',
