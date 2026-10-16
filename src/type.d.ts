@@ -20,6 +20,10 @@ interface Project {
   insertDate: string;
   /** Technologies used; names match skillIcons / techIcons keys. */
   tech?: string[];
+  /** Source code URL, when `links` points to a live demo. */
+  repo?: string;
+  /** Show the "Lihat Kode" button for `repo`. Only set once the repo is public, otherwise visitors get a 404. */
+  repoPublic?: boolean;
 }
 
 interface Education {

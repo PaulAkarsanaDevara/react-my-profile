@@ -46,7 +46,14 @@ const DetailProject = () => {
 
   const previous = projects[index - 1];
   const next = projects[index + 1];
-  const repo = detailProject.links && isRepo(detailProject.links);
+  // `links` is a live demo unless it points at GitHub; `repo` adds the source link
+  const linkIsRepo = Boolean(detailProject.links) && isRepo(detailProject.links);
+  const demoUrl = linkIsRepo ? undefined : detailProject.links || undefined;
+  const repoUrl = linkIsRepo
+    ? detailProject.links
+    : detailProject.repoPublic
+      ? detailProject.repo
+      : undefined;
 
   return (
     <section className="detailproject-section pb-5">
@@ -98,7 +105,7 @@ const DetailProject = () => {
 
           <div className="detail-project__content-description">
             {detailProject.description ||
-              'Deskripsi proyek belum tersedia. Buka proyeknya untuk melihat detail lengkapnya.'}
+              'Belum ada deskripsi untuk proyek ini.'}
           </div>
 
           {detailProject.tech && detailProject.tech.length > 0 && (
@@ -117,24 +124,28 @@ const DetailProject = () => {
             </div>
           )}
 
-          {detailProject.links && (
+          {(demoUrl || repoUrl) && (
             <div className="detail-project__actions">
-              <a
-                href={detailProject.links}
-                target="_blank"
-                rel="noreferrer"
-                className="resume-btn resume-btn--solid"
-              >
-                {repo ? (
-                  <>
-                    <FaGithub size={15} /> Lihat Kode
-                  </>
-                ) : (
-                  <>
-                    Buka Demo <FaExternalLinkAlt size={12} />
-                  </>
-                )}
-              </a>
+              {demoUrl && (
+                <a
+                  href={demoUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="resume-btn resume-btn--solid"
+                >
+                  Buka Demo <FaExternalLinkAlt size={12} />
+                </a>
+              )}
+              {repoUrl && (
+                <a
+                  href={repoUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={`resume-btn ${demoUrl ? 'resume-btn--ghost' : 'resume-btn--solid'}`}
+                >
+                  <FaGithub size={15} /> Lihat Kode
+                </a>
+              )}
             </div>
           )}
         </motion.div>

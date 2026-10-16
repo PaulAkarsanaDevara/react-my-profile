@@ -4,9 +4,9 @@ import Reveal from '../../shared/motion/Reveal';
 import SectionHead from './SectionHead';
 
 const featuredIds = [
-  'proyek-membangun-aplikasi-react-dengan-redux',
-  'proyek-implementasi-redux-pada-aplikasi-sosial-media-open-sp',
-  'proyek-membangun-aplikasi-movie-catalogue-app',
+  'alaraya-cuaca-dan-gempa-indonesia',
+  'layarvia-penjelajah-film',
+  'notea-aplikasi-catatan',
 ];
 
 const featured = featuredIds

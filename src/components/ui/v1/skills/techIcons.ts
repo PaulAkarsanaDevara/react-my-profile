@@ -1,16 +1,23 @@
 import { IconType } from 'react-icons';
 import {
   SiDocker,
+  SiFramer,
   SiGnubash,
   SiGrafana,
   SiJenkins,
   SiKubernetes,
+  SiLeaflet,
   SiLinux,
   SiPrometheus,
   SiPwa,
+  SiRedis,
   SiRedux,
   SiTestinglibrary,
   SiThemoviedatabase,
+  SiVercel,
+  SiVite,
+  SiVitest,
+  SiZod,
 } from 'react-icons/si';
 import skillIcons from './skillIcons';
 
@@ -34,6 +41,13 @@ const techIcons: Record<string, TechIcon> = {
   'Shell Script': { Icon: SiGnubash, color: '#4eaa25' },
   'TMDB API': { Icon: SiThemoviedatabase, color: '#01b4e4' },
   Testing: { Icon: SiTestinglibrary, color: '#e33332' },
+  Leaflet: { Icon: SiLeaflet, color: '#199900' },
+  Redis: { Icon: SiRedis, color: '#ff4438' },
+  Vercel: { Icon: SiVercel, color: 'currentColor' },
+  Vitest: { Icon: SiVitest, color: '#6e9f18' },
+  Zod: { Icon: SiZod, color: '#3068b7' },
+  'Framer Motion': { Icon: SiFramer, color: '#0055ff' },
+  Vite: { Icon: SiVite, color: '#646cff' },
 };
 
 export default techIcons;
