@@ -311,3 +311,75 @@
 .timeline-card__sublist li::marker {
   color: var(--text-muted);
 }
+
+/* Collapsible groups, expand-all control, Home "see more" link */
+.timeline-card__tools {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+.timeline-card__tool-btn {
+  padding: 2px 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.timeline-card__tool-btn:hover {
+  text-decoration: underline;
+}
+
+.timeline-card__list-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.timeline-card__list-toggle:hover .timeline-card__list-head {
+  color: var(--accent);
+}
+.timeline-card__list-count {
+  min-width: 22px;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: var(--surface-hover);
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: center;
+}
+.timeline-card__chevron {
+  color: var(--text-muted);
+  transition: transform 220ms ease;
+}
+.timeline-card__chevron.is-open {
+  transform: rotate(180deg);
+}
+.timeline-card__sublist {
+  overflow: hidden;
+}
+
+.timeline-card__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: gap 200ms ease;
+}
+.timeline-card__more:hover {
+  gap: 12px;
+  color: var(--accent);
+}

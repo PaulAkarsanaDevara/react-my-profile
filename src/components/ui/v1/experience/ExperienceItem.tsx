@@ -1,12 +1,21 @@
-import React from 'react';
-import { FaBriefcase, FaMapMarkerAlt } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
+import { FaArrowRight, FaBriefcase, FaMapMarkerAlt } from 'react-icons/fa';
+import { FiChevronDown } from 'react-icons/fi';
 
-type ExperienceItemProps = Experience;
+type ExperienceItemProps = Experience & {
+  /** Short version for Home: intro + top bullets, no details, link to Resume. */
+  compact?: boolean;
+  /** Whether grouped bullets start expanded (Resume page). */
+  defaultOpen?: boolean;
+};
 
 type BulletItem = { text: string; children: string[] };
 
 const TOP_PREFIX = '- ';
 const CHILD_PREFIX = '  - ';
+const COMPACT_BULLETS = 4;
 
 /**
  * Description format:
@@ -42,8 +51,33 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({
   startDate,
   endDate,
   description,
+  compact = false,
+  defaultOpen = true,
 }) => {
   const { paragraph, bullets } = splitDescription(description);
+  const groupIndexes = bullets
+    .map((item, index) => (item.children.length > 0 ? index : -1))
+    .filter((index) => index >= 0);
+
+  const [open, setOpen] = useState<Set<number>>(
+    () => new Set(defaultOpen ? groupIndexes : [])
+  );
+
+  const toggle = (index: number) =>
+    setOpen((previous) => {
+      const next = new Set(previous);
+      if (next.has(index)) next.delete(index);
+      else next.add(index);
+      return next;
+    });
+
+  const allOpen = groupIndexes.every((index) => open.has(index));
+  const toggleAll = () => setOpen(new Set(allOpen ? [] : groupIndexes));
+
+  const visibleBullets = compact ? bullets.slice(0, COMPACT_BULLETS) : bullets;
+  const hasMore =
+    bullets.length > COMPACT_BULLETS ||
+    visibleBullets.some((item) => item.children.length > 0);
 
   return (
     <div className="timeline-card">
@@ -64,28 +98,79 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({
         <h3 className="timeline-card__title">{job}</h3>
         <div className="timeline-card__subtitle">{company}</div>
         <p className="timeline-card__description">{paragraph}</p>
-        {bullets.length > 0 && (
+
+        {!compact && groupIndexes.length > 1 && (
+          <div className="timeline-card__tools">
+            <button
+              type="button"
+              className="timeline-card__tool-btn"
+              onClick={toggleAll}
+            >
+              {allOpen ? 'Collapse all' : 'Expand all'}
+            </button>
+          </div>
+        )}
+
+        {visibleBullets.length > 0 && (
           <ul className="timeline-card__list">
-            {bullets.map((item, index) => (
-              <li
-                key={index}
-                className={item.children.length > 0 ? 'has-children' : undefined}
-              >
-                {item.children.length > 0 ? (
-                  <span className="timeline-card__list-head">{item.text}</span>
-                ) : (
-                  item.text
-                )}
-                {item.children.length > 0 && (
-                  <ul className="timeline-card__sublist">
-                    {item.children.map((child, childIndex) => (
-                      <li key={childIndex}>{child}</li>
-                    ))}
-                  </ul>
-                )}
-              </li>
-            ))}
+            {visibleBullets.map((item, index) => {
+              const isGroup = item.children.length > 0;
+              const isOpen = open.has(index);
+
+              if (!isGroup) return <li key={index}>{item.text}</li>;
+
+              if (compact) {
+                return (
+                  <li key={index} className="has-children">
+                    <span className="timeline-card__list-head">{item.text}</span>
+                  </li>
+                );
+              }
+
+              return (
+                <li key={index} className="has-children">
+                  <button
+                    type="button"
+                    className="timeline-card__list-toggle"
+                    aria-expanded={isOpen}
+                    onClick={() => toggle(index)}
+                  >
+                    <span className="timeline-card__list-head">{item.text}</span>
+                    <span className="timeline-card__list-count">
+                      {item.children.length}
+                    </span>
+                    <FiChevronDown
+                      size={16}
+                      className={`timeline-card__chevron${isOpen ? ' is-open' : ''}`}
+                      aria-hidden="true"
+                    />
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.ul
+                        key="details"
+                        className="timeline-card__sublist"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25 }}
+                      >
+                        {item.children.map((child, childIndex) => (
+                          <li key={childIndex}>{child}</li>
+                        ))}
+                      </motion.ul>
+                    )}
+                  </AnimatePresence>
+                </li>
+              );
+            })}
           </ul>
+        )}
+
+        {compact && hasMore && (
+          <Link to="/resume" className="timeline-card__more">
+            Lihat selengkapnya <FaArrowRight size={11} />
+          </Link>
         )}
       </div>
     </div>

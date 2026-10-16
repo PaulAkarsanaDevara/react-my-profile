@@ -15,7 +15,7 @@ const RecentExperience = () => (
     <div className="timeline">
       {recent.map((item, index) => (
         <Reveal key={index} delay={index * 0.1} className="timeline-entry">
-          <ExperienceItem {...item} />
+          <ExperienceItem {...item} compact />
         </Reveal>
       ))}
     </div>
