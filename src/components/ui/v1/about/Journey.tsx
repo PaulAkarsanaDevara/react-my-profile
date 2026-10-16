@@ -8,19 +8,14 @@ const milestones = [
     place: 'SMK 10 November · Computer & Network Engineering',
   },
   {
-    year: '2018',
-    title: 'Digital Marketing Intern',
-    place: 'PT Bipie',
-  },
-  {
     year: '2020',
     title: 'Began Informatics degree',
     place: 'Universitas Bina Sarana Informatika',
   },
   {
     year: '2022',
-    title: 'DevOps workshop volunteer & Laravel intern',
-    place: 'Kubernetes (K8s) · PT Solusi Tiga Selaras',
+    title: 'Full Stack Developer intern',
+    place: 'PT Solusi Tiga Selaras',
   },
   {
     year: '2023',
@@ -29,7 +24,7 @@ const milestones = [
   },
   {
     year: '2024',
-    title: 'Graduated & Web Developer',
+    title: 'Graduated & Full Stack Developer',
     place: 'GPA 3.91 · PT Winni Code Garuda Indonesia',
   },
 ];

@@ -28,7 +28,7 @@ const facts = [
     icon: <FaBriefcase size={17} />,
     label: 'Experience',
     value: `${experience.length} roles`,
-    detail: 'Internships & workshops',
+    detail: 'Internships & work',
   },
   {
     icon: <FaCertificate size={17} />,

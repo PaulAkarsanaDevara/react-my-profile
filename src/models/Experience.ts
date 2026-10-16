@@ -1,7 +1,7 @@
 const experience: Experience[] = [
   {
     company: 'PT Winni Code Garuda Indonesia',
-    job: 'Web Developer Laravel',
+    job: 'Full Stack Developer',
     location: 'Bandung, Jawa Barat, Indonesia',
     startDate: 'Aug 2024',
     endDate: 'Okt 2024',
@@ -20,27 +20,11 @@ Directly involved in organizing, directing and implementing projects according t
   },
   {
     company: 'PT Solusi Tiga Selaras',
-    job: 'Full Stack Laravel Developer',
+    job: 'Full Stack Developer',
     location: 'Jakarta Selatan, Jakarta Raya, Indonesia',
     startDate: 'Aug 2022',
     endDate: 'Des 2022',
-    description: `During my internship as a Full Stack Laravel Developer, I was assigned to create an internal web application call using Javascript and PHP framework Laravel, implement database design using the PHP Artisan Console feature in the Laravel framework, fix bugs in application development, document applications that have been developed, and collaborate with Project Management Team, Developers and QA team during web application development.`,
-  },
-  {
-    company: 'Universitas Bina Sarana Informatika',
-    job: 'Volunteer Workshop DevOps Menggunakan Kubernetes (K8s)',
-    location: '',
-    startDate: 'Jun 2022',
-    endDate: 'Jun 2022',
-    description: `During the DevOps Volunteer Workshop Using Kubernetes (K8s) I created and ran images and containers using Docker. Testing web applications in Docker and Helping participants resolve Docker installation issues.`,
-  },
-  {
-    company: 'PT Bipie',
-    job: 'Digital Marketing Intern',
-    location: 'Tambun Selatan, Jawa Barat, Indonesia',
-    startDate: 'Sep 2018',
-    endDate: 'Mar 2019',
-    description: `During my internship as a Digital Marketing Intern, I was assigned to carry out Search Engine Optimization (SEO) research, analyze products in the marketplace, create SKU codes, collect product data, develop promotional plans and upload products to social media. `,
+    description: `During my internship as a Full Stack Developer, I was assigned to create an internal web application call using Javascript and PHP framework Laravel, implement database design using the PHP Artisan Console feature in the Laravel framework, fix bugs in application development, document applications that have been developed, and collaborate with Project Management Team, Developers and QA team during web application development.`,
   },
 ];
 
