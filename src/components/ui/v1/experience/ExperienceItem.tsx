@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaBriefcase, FaMapMarkerAlt } from 'react-icons/fa';
 
 type ExperienceItemProps = Experience;
 
@@ -10,14 +11,25 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({
   endDate,
   description,
 }) => (
-  <div className="experience-items">
-    <div className="experience-items__job">{job}</div>
-    <div className="experience-items__company">{company} </div>
-    <div className="experience-items__date">
-      {startDate} - {endDate}
+  <div className="timeline-card">
+    <span className="timeline-card__dot" aria-hidden="true">
+      <FaBriefcase size={13} />
+    </span>
+    <div className="timeline-card__body">
+      <div className="timeline-card__chips">
+        <span className="timeline-chip">
+          {startDate} – {endDate}
+        </span>
+        {location && (
+          <span className="timeline-chip">
+            <FaMapMarkerAlt size={10} /> {location}
+          </span>
+        )}
+      </div>
+      <h3 className="timeline-card__title">{job}</h3>
+      <div className="timeline-card__subtitle">{company}</div>
+      <p className="timeline-card__description">{description}</p>
     </div>
-    <div className="experience-items__location">{location}</div>
-    <div className="experience-items__description">{description}</div>
   </div>
 );
 

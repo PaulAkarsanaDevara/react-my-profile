@@ -1,8 +1,10 @@
 import { Navbar, Container, Nav } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { menuListItem } from '../../../../models/MenuList';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { useState } from 'react';
+import ThemeToggle from '../motion/ThemeToggle';
 
 import '../../../../styles/navbar.css';
 
@@ -15,7 +17,7 @@ const TopNavigation = () => {
 
   return (
     <Navbar
-      className="transparent navbar-inverse  border-bottom   border-dark"
+      className="transparent navbar-inverse"
       sticky="top"
       collapseOnSelect
       expand="lg"
@@ -26,23 +28,39 @@ const TopNavigation = () => {
           Farhan
         </Link>
 
-        <Navbar.Toggle
-          onClick={() => setExpanded(expanded ? false : true)}
-          aria-controls="responsive-navbar-nav"
-        >
-          <RxHamburgerMenu fontSize={22} color="fff" />
-        </Navbar.Toggle>
+        <div className="d-flex align-items-center gap-2 order-lg-last">
+          <ThemeToggle />
+          <Navbar.Toggle
+            onClick={() => setExpanded(!expanded)}
+            aria-controls="responsive-navbar-nav"
+          >
+            <RxHamburgerMenu fontSize={22} />
+          </Navbar.Toggle>
+        </div>
+
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto justify-content-start">
-            {menuListItem.map((menuItem, idx) => (
-              <Link
+            {menuListItem.map((menuItem) => (
+              <NavLink
                 onClick={closeNavbar}
-                key={+idx}
+                key={menuItem.links}
                 to={menuItem.links}
+                end={menuItem.links === '/'}
                 className="nav-link custom-nav__link mx-md-3 "
               >
-                {menuItem.name}
-              </Link>
+                {({ isActive }) => (
+                  <>
+                    {menuItem.name}
+                    {isActive && (
+                      <motion.span
+                        layoutId="nav-indicator"
+                        className="nav-link__indicator"
+                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                  </>
+                )}
+              </NavLink>
             ))}
           </Nav>
         </Navbar.Collapse>

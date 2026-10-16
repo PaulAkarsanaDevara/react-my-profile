@@ -1,18 +1,18 @@
-import { Row, Col } from 'react-bootstrap';
 import { experience } from '../../../../models/Experience';
 import ExperienceItem from './ExperienceItem';
+import Reveal from '../../shared/motion/Reveal';
 
 const ExperienceListItem = () => {
   const items: Experience[] = experience;
 
   return (
-    <Row className="justify-content-start g-3 py-3">
-      <Col lg={12} md={12} xl={12}>
-        {items.map((item, index) => (
-          <ExperienceItem key={index} {...item} />
-        ))}
-      </Col>
-    </Row>
+    <div className="timeline">
+      {items.map((item, index) => (
+        <Reveal key={index} delay={index * 0.08} className="timeline-entry">
+          <ExperienceItem {...item} />
+        </Reveal>
+      ))}
+    </div>
   );
 };
 

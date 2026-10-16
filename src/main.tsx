@@ -9,6 +9,7 @@ import './styles/portofolio.css';
 import './styles/contact.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'animate.css';
+import './styles/theme.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

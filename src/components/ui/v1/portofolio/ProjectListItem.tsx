@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { MyComponentInstance } from '../../shared/MyComponent';
 import LogoSearchEmpty from '/icons/hand-drawn-no-data-illustration.png';
 
@@ -7,11 +8,27 @@ type ProjectListItemProps = { items: Project[] };
 const ProjectListItem: React.FC<ProjectListItemProps> = ({ items }) => (
   <>
     {items?.length ? (
-      <div className="portofolio-list">
-        {items?.map((project) => (
-          <MyComponentInstance.ProjectItem key={project.id} {...project} />
-        ))}
-      </div>
+      <motion.div className="portofolio-list" layout>
+        <AnimatePresence mode="popLayout">
+          {items?.map((project, index) => (
+            <motion.div
+              key={project.id}
+              layout
+              className="portofolio-list__cell"
+              initial={{ opacity: 0, y: 30, scale: 0.96 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                transition: { delay: Math.min(index, 8) * 0.05, duration: 0.45 },
+              }}
+              exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
+            >
+              <MyComponentInstance.ProjectItem {...project} />
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
     ) : (
       <MyComponentInstance.ProjectSearchEmpty
         text=" Daftar proyek tidak ditemukan!"

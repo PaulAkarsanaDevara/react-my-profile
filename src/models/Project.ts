@@ -1,8 +1,6 @@
-import { nanoid } from 'nanoid';
-
 const projects: Project[] = [
   {
-    id: nanoid(16),
+    id: 'proyek-implementasi-asynchronous-communication-pada-aplikasi',
     name: 'Proyek Implementasi Asynchronous Communication pada Aplikasi E-Commerce App',
     coverImage: '/images/13429_ILL_DevOpsLoop.webp',
     startDate: 'Feb 2024',
@@ -14,7 +12,7 @@ const projects: Project[] = [
     insertDate: '2024-08-23T08:02:49.926Z',
   },
   {
-    id: nanoid(16),
+    id: 'proyek-deploy-aplikasi-karsa-jobs-dengan-kubernetes',
     name: 'Proyek Deploy Aplikasi Karsa Jobs dengan Kubernetes',
     coverImage: '/images/13429_ILL_DevOpsLoop.webp',
     startDate: 'Feb 2024',
@@ -26,7 +24,7 @@ const projects: Project[] = [
     insertDate: '2024-08-23T08:02:49.926Z',
   },
   {
-    id: nanoid(16),
+    id: 'proyek-deploy-aplikasi-item-app-dengan-docker-compose',
     name: 'Proyek Deploy Aplikasi Item App dengan Docker Compose',
     coverImage: '/images/13429_ILL_DevOpsLoop.webp',
     startDate: 'Feb 2024',
@@ -38,7 +36,7 @@ const projects: Project[] = [
     insertDate: '2024-08-23T08:02:49.926Z',
   },
   {
-    id: nanoid(16),
+    id: 'proyek-membangun-ci-cd-pipeline-dengan-jenkins',
     name: 'Proyek Membangun CI/CD Pipeline dengan Jenkins',
     coverImage: '/images/13429_ILL_DevOpsLoop.webp',
     startDate: 'Feb 2024',
@@ -50,7 +48,7 @@ const projects: Project[] = [
     insertDate: '2024-08-23T08:02:49.926Z',
   },
   {
-    id: nanoid(16),
+    id: 'proyek-membangun-ci-cd-pipeline-dengan-jenkins-2',
     name: 'Proyek Membangun CI/CD Pipeline dengan Jenkins',
     coverImage: '/images/13429_ILL_DevOpsLoop.webp',
     startDate: 'Feb 2024',
@@ -62,7 +60,7 @@ const projects: Project[] = [
     insertDate: '2024-08-23T08:02:49.926Z',
   },
   {
-    id: nanoid(16),
+    id: 'proyek-konfigurasi-ssh-server',
     name: 'Proyek Konfigurasi SSH Server',
     coverImage: '/images/13429_ILL_DevOpsLoop.webp',
     startDate: 'Feb 2024',
@@ -74,7 +72,7 @@ const projects: Project[] = [
     insertDate: '2024-08-23T08:02:49.926Z',
   },
   {
-    id: nanoid(16),
+    id: 'proyek-shell-scripting',
     name: 'Proyek Shell Scripting',
     coverImage: '/images/13429_ILL_DevOpsLoop.webp',
     startDate: 'Feb 2024',
@@ -86,7 +84,7 @@ const projects: Project[] = [
     insertDate: '2024-08-23T08:02:49.926Z',
   },
   {
-    id: nanoid(16),
+    id: 'proyek-mendesain-ulang-tampilan-ui-website-smartnation-mengg',
     name: 'Proyek Mendesain Ulang Tampilan UI Website Smartnation Menggunakan React',
     coverImage: '/images/proyek_smarrtnation.png',
     startDate: 'Feb 2024',
@@ -97,7 +95,7 @@ const projects: Project[] = [
     insertDate: '2024-08-23T08:02:49.926Z',
   },
   {
-    id: nanoid(16),
+    id: 'proyek-katalog-restoran-pwa-testing-and-optimized',
     name: 'Proyek  Katalog Restoran PWA + Testing and Optimized',
     coverImage: '',
     startDate: 'Feb 2024',
@@ -108,7 +106,7 @@ const projects: Project[] = [
     insertDate: '2024-08-23T08:02:49.926Z',
   },
   {
-    id: nanoid(16),
+    id: 'proyek-membangun-aplikasi-react-dengan-redux',
     name: 'Proyek: Membangun Aplikasi React dengan Redux',
     coverImage: '/images/proyek_forum_discussion.png',
     startDate: 'Jan 2024',
@@ -120,7 +118,7 @@ const projects: Project[] = [
     insertDate: '2024-08-23T08:02:49.926Z',
   },
   {
-    id: nanoid(16),
+    id: 'proyek-menerapkan-automation-testing-dan-ci-cd-pada-aplikasi',
     name: 'Proyek Menerapkan Automation Testing dan CI/CD pada Aplikasi Forum Diskusi',
     coverImage: '/images/proyek_forum_discussion.png',
     startDate: 'Jan 2024',
@@ -132,7 +130,7 @@ const projects: Project[] = [
     insertDate: '2024-08-23T08:02:49.926Z',
   },
   {
-    id: nanoid(16),
+    id: 'proyek-implementasi-redux-pada-aplikasi-sosial-media-open-sp',
     name: 'Proyek Implementasi Redux pada Aplikasi Sosial Media Open Space (Twitter Like App)',
     coverImage: '/images/proyek_open_space.png',
     startDate: 'Jan 2024',
@@ -144,7 +142,7 @@ const projects: Project[] = [
     insertDate: '2024-08-23T08:02:49.926Z',
   },
   {
-    id: nanoid(16),
+    id: 'proyek-membangun-aplikasi-indonesia-berita-app-menggunakan-r',
     name: 'Proyek Membangun Aplikasi Indonesia Berita App Menggunakan React',
     coverImage: '/images/proyek_indonesia_berita.png',
     startDate: 'Jan 2024',
@@ -156,7 +154,7 @@ const projects: Project[] = [
     insertDate: '2024-08-23T08:02:49.926Z',
   },
   {
-    id: nanoid(16),
+    id: 'proyek-membangun-aplikasi-movie-catalogue-app',
     name: 'Proyek Membangun Aplikasi Movie Catalogue App',
     coverImage: '/images/proyek_movie_catalogue.png',
     startDate: 'Jan 2024',
@@ -168,7 +166,7 @@ const projects: Project[] = [
     insertDate: '2024-08-23T08:02:49.926Z',
   },
   {
-    id: nanoid(16),
+    id: 'proyek-membangun-aplikasi-football-club-finder-app',
     name: 'Proyek Membangun Aplikasi Football Club Finder App',
     coverImage: '/images/proyek_footbal_club_finder.png',
     startDate: 'Jan 2024',
@@ -181,7 +179,7 @@ const projects: Project[] = [
     insertDate: '2024-08-23T08:02:49.926Z',
   },
   {
-    id: nanoid(16),
+    id: 'proyek-membangun-aplikasi-catatan-menggunakan-react',
     name: 'Proyek Membangun Aplikasi Catatan Menggunakan React',
     coverImage: '/images/proyek_personalnotes.png',
     startDate: 'Jan 2024',
@@ -193,7 +191,7 @@ const projects: Project[] = [
     insertDate: '2024-08-23T08:02:49.926Z',
   },
   {
-    id: nanoid(16),
+    id: 'proyek-membangun-aplikasi-todolist-app-menggunakan-vue',
     name: 'Proyek Membangun Aplikasi TodoList App Menggunakan Vue',
     coverImage: '/images/proyek_todolist.png',
     startDate: 'Jan 2024',
@@ -204,7 +202,7 @@ const projects: Project[] = [
     insertDate: '2024-08-23T08:02:49.926Z',
   },
   {
-    id: nanoid(16),
+    id: 'proyek-membangun-aplikasi-lafood-app-menggunakan-flutter',
     name: 'Proyek Membangun Aplikasi Lafood App Menggunakan Flutter',
     coverImage: '/images/proyek_todolist.png',
     startDate: 'Jan 2024',

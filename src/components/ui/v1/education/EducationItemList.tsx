@@ -1,10 +1,13 @@
 import education from '../../../../models/Education';
 import EducationItem from './EducationItem';
+import Reveal from '../../shared/motion/Reveal';
 
 const EducationListItem = () => (
-  <div className="about-education__list">
+  <div className="timeline">
     {education.map((edu, index) => (
-      <EducationItem key={index} {...edu} />
+      <Reveal key={index} delay={index * 0.08} className="timeline-entry">
+        <EducationItem {...edu} />
+      </Reveal>
     ))}
   </div>
 );

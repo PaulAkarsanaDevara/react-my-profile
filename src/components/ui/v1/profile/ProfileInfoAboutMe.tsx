@@ -2,11 +2,13 @@ import * as React from 'react';
 import ProfileHeading from './ProfileHeading';
 import ProfileSummary from './ProfileSummary';
 import { MyComponentInstance } from '../../shared/MyComponent';
+import Reveal from '../../shared/motion/Reveal';
 
 type IProps = { headingName: string; summary: string };
 
 const ProfileInfoAboutme: React.FC<IProps> = ({ summary, headingName }) => {
   const content = (
+    <Reveal>
     <div className="profile-summary">
       <ProfileHeading heading={headingName} />
       <ProfileSummary summary={summary} />
@@ -29,6 +31,7 @@ const ProfileInfoAboutme: React.FC<IProps> = ({ summary, headingName }) => {
         </div>
       </div>
     </div>
+    </Reveal>
   );
 
   return content;
