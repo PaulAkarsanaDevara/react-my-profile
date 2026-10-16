@@ -6,10 +6,11 @@ const experience: Experience[] = [
     startDate: 'Oct 2024',
     endDate: 'Present',
     description: `I work on a hospital information system (SIMRS) used by multiple hospitals, built with Laravel and Blade in a large team with a shared codebase. I work across the stack, from database migrations, SQL views and controllers to screens, print layouts and Excel and PDF exports. Most of my work comes from tickets, both new features and fixes.
-- Reports module: built the admission, bed availability and appointment reports (visit registers, census, patient mutation, new vs returning patients, waiting lists) and the shared layer behind the module. Each report is backed by an SQL view with its own migration and menu entry, with date and unit filters, an on-screen preview and Excel export.
-- General report: tuned a slow configurable report query from about 100 seconds down to under a second.
-- National regulatory (RL) forms: created most of the data models and SQL functions for around 28 RL report forms (inpatient and outpatient activity, laboratory, radiology, pharmacy, disease statistics), building on the first two started by a colleague.
-- Report builder and exports: built a report builder (report types and access) and fixed Excel exports that would not open in newer Excel, across inventory, billing and pharmacy reports.
+- Reports
+  - Report builder: in my first months, built a report builder (report types and access control) and the first set of reports on top of it: outpatient admissions, cashier revenue, pharmacy prescriptions, TB-DOTS drug and mask use, marketing demographics and inventory purchasing.
+  - Reports module: in 2026, built the admission reports in the new reports module (daily register, visit recap, outpatient visits per clinic, registration queue, census and statistics, inpatient admissions, patient mutation, class upgrades, bed availability, waiting list, new and returning patients, appointments) and a configurable general visits report. Each report is backed by an SQL view with its own migration and menu entry, with filters, an on-screen preview and Excel export.
+  - Regulatory (RL) forms: in 2025, built the first version of more than 20 RL report forms (visit recaps, inpatient and outpatient activity, laboratory, radiology, surgery, rehabilitation, pharmacy, payment methods, and top-ten disease and death rankings). In the newer reporting module, wrote the SQL functions for RL 3.9, 3.11 and 3.13 and fixed RL 3.8. Colleagues built the rest.
+  - Excel exports: fixed exports that failed to download or would not open in newer Excel, across inventory, billing and pharmacy reports.
 - Laboratory integrations: six lab systems
   - Connected the hospital system to Wynacom, Sysmex, BBM, Mlabs, Vanslab and Medisynclab, so lab orders reach the lab system and results come back.
   - Each lab has its own way of talking, so the bridges are small Go services. Built the Medisynclab one from scratch, built the Mlabs API integration, and worked on the others. They retry failed sends, renew expired login tokens, and have screens to monitor orders.
@@ -31,10 +32,25 @@ const experience: Experience[] = [
   - Since September 2026 it no longer pulls from the "approved" status, at Thena's request, to stop a race with their own review service.
   - Fixed a bug where old unfinished orders filled each batch and held back newer reports. Orders that carry a report now go first, and old unfinished ones are capped by age.
   - Built the monitoring page: statistics, order list, logs, orphan orders that can be rebuilt, and a fetch-now button.
-- Pharmacy: worked on the prescription modules: prescription validation, final prescriptions, outpatient (external) prescriptions with returns and invoices, queue numbers with prefixes, daily-dose lists, and print layouts. Added the online pharmacy (APOL) history and bulk sending, and created the doctor prescription templates module.
-- Nutrition assessment: built a child nutrition-status assessment module from scratch (tables, screens and rules based on weight, length and BMI), and added the BMI score to the patient header.
-- Breast-milk labels: built the breast-milk label printing module end to end, from the table and screens to the PDF label.
-- Diet labels and reports: built configurable diet-label printing (templates, text, packaging times, allergy warnings) and configurable diet report columns with Excel and PDF output. Added multi-meal diets and allergy tracking to inpatient diet orders.
+- Pharmacy
+  - Worked on the prescription modules, mostly extending and fixing features built by colleagues: prescription validation, final prescriptions, external (outpatient) prescriptions, returns and invoices.
+  - Pharmacy queues: showed the queue number on validation and printed it automatically, fixed duplicate numbers across guarantors, and added queues for external prescriptions and for cito and online (APOL) prescriptions.
+  - Unit-dose (daily dose) lists and printouts, with an alert when a patient's unit differs.
+  - Print layouts for final prescriptions, medicine labels, unit-dose sheets and bills: fixed layouts, logos, paper sizes and missing items.
+  - Added a custom prescription copy (add medicines by hand), a list of cancelled prescriptions with a filter, and a clear reason when an external prescription cannot be returned.
+  - Online pharmacy (APOL): built the medication history module and a guard against duplicate items when saving.
+  - Created the doctor prescription templates module, which imports master templates for compounded and non-compounded orders from Excel.
+- Nutrition (Gizi)
+  - Created the child nutrition-status module: 25 status categories across five growth indices (weight, length or height, and BMI for age), automatic BMI and age in months, and a status badge on the outpatient, inpatient, ER and support-services patient lists.
+  - Breast-milk labels: built the module end to end. A nurse opens the patient's notes, the patient details fill in by themselves, only the date and time are entered, and the label is saved to a print history and printed as a PDF sized to one sticker. Chose PDF over browser printing because printer drivers changed the paper size and browser headers ended up on the sticker.
+  - Diet labels: merged three separate label renderers into one, with templates for different print formats, free-text fields, packaging time and an allergy note, plus a settings page for font, visibility and text position. Kept the old path as a fallback so existing hospitals saw no change.
+  - Diet lists and reports: configurable PDF and Excel columns, and added multi-meal diets, allergy tracking, diet diagnosis, a nutrition-given checklist and insurance (COB) info.
+  - Fixed many details in diet lists and prints, like truncated names, packaging times and shared room names.
+- Billing and invoices
+  - Worked on the cashier side of the system, which a colleague built. Most of my work was fixing and extending the printed billing, pre-billing, invoice and receipt layouts: headers and logos, subtotals and rounding, duplicate lines, comparison billing, and deposit and insurance receipts.
+  - Outside-prescription invoices: fixed closing and duplicate-item bugs, and added a guard for prescriptions edited after the invoice was opened.
+  - Added an accounting role that only sees the pre-billing button on non-patient invoices, per-branch cash selection, an option to show or hide the staff signature on bills, and LOC document upload in the cashier screens.
+  - Fixed billing calculation bugs: returned drugs not deducted, group tariff discounts not applied, wrong admin fees, and refunds on fully paid invoices. Also fixed SQL injection issues in the invoice controllers.
 - Security: added forced password change on first login and a limit on active sessions per user.
 - Wrote automated tests for some lab, radiology and invoice features.`,
   },
