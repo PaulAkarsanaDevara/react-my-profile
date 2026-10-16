@@ -5,12 +5,12 @@
 
 :root,
 :root[data-theme='dark'] {
-  --bg: #0b0b12;
-  --bg-elevated: #12121c;
-  --surface: rgba(255, 255, 255, 0.04);
-  --surface-hover: rgba(255, 255, 255, 0.08);
-  --border: rgba(255, 255, 255, 0.1);
-  --border-strong: rgba(255, 255, 255, 0.22);
+  --bg: #030305;
+  --bg-elevated: #0a0a0f;
+  --surface: rgba(255, 255, 255, 0.025);
+  --surface-hover: rgba(255, 255, 255, 0.055);
+  --border: rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.16);
   --text: #f3f4f8;
   --text-muted: rgba(243, 244, 248, 0.68);
   --accent: #7c6cf6;
@@ -19,8 +19,8 @@
   --gradient: #7c6cf6;
   --gradient-text: #a99bff;
   --glow: 0 0 0 1px rgba(124, 108, 246, 0.35), 0 10px 40px -10px rgba(124, 108, 246, 0.45);
-  --shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.6);
-  --nav-bg: rgba(11, 11, 18, 0.65);
+  --shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.9);
+  --nav-bg: rgba(3, 3, 5, 0.75);
   --blob-opacity: 0.35;
   --radius: 16px;
   color-scheme: dark;
