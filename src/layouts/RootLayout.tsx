@@ -6,10 +6,14 @@ import AmbientBackground from '../components/ui/shared/motion/AmbientBackground'
 import PageTransition from '../components/ui/shared/motion/PageTransition';
 import ScrollProgress from '../components/ui/shared/motion/ScrollProgress';
 import MobileTabBar from '../components/ui/shared/navbar/MobileTabBar';
+import BackToTop from '../components/ui/shared/motion/BackToTop';
 
 const RootLayout: React.FC = () => {
   return (
     <MotionConfig reducedMotion="user">
+      <a className="skip-link" href="#main-content">
+        Lewati ke konten
+      </a>
       <AmbientBackground />
       <ScrollProgress />
       <Suspense fallback={null}>
@@ -17,7 +21,7 @@ const RootLayout: React.FC = () => {
       </Suspense>
 
       {/* Rendered Content Start */}
-      <main className="main-content">
+      <main className="main-content" id="main-content" tabIndex={-1}>
         <Container className="main-content-container">
           <PageTransition />
         </Container>
@@ -27,6 +31,7 @@ const RootLayout: React.FC = () => {
       <Suspense fallback={null}>
         <MyComponentInstance.BottomNavigation />
       </Suspense>
+      <BackToTop />
       <MobileTabBar />
     </MotionConfig>
   );

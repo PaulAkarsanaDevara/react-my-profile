@@ -1,6 +1,5 @@
 import { defineConfig, loadEnv, Plugin } from 'vite';
 import react from '@vitejs/plugin-react-swc';
-import dts from 'vite-plugin-dts';
 
 const SITEMAP_ROUTES = ['/', '/me', '/resume', '/portfolio', '/contact'];
 
@@ -39,7 +38,7 @@ export default defineConfig(({ mode }) => {
   const siteUrl = (env.VITE_SITE_URL || '').replace(/\/+$/, '');
 
   return {
-    plugins: [react(), dts({ rollupTypes: true }), siteMeta(siteUrl)],
+    plugins: [react(), siteMeta(siteUrl)],
     build: {
       rollupOptions: {
         output: {

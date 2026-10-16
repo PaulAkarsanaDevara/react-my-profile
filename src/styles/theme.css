@@ -235,9 +235,7 @@ textarea:focus-visible {
 }
 
 .profile-heading,
-.profile-summary .profile-summary__heading,
-.resume-item__heading,
-.skills-heading {
+.resume-item__heading {
   font-family: 'Plus Jakarta Sans', 'Poppins', sans-serif;
   font-weight: 800;
   letter-spacing: -0.3px;
@@ -248,10 +246,6 @@ textarea:focus-visible {
   line-height: 1.2;
   color: var(--gradient-text);
   width: fit-content;
-}
-.skills-heading {
-  color: var(--text);
-  font-size: 18px;
 }
 
 /* ---------- Hero / Profile ---------- */
@@ -366,9 +360,6 @@ textarea:focus-visible {
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
-.profile-summary .profile-summary__heading {
-  font-size: 24px;
-}
 
 /* styles from about.module.css are hashed, so target by attribute */
 [class*='profileSummaryText'] {
@@ -411,11 +402,8 @@ textarea:focus-visible {
 }
 
 /* ---------- Cards (shared look) ---------- */
-.about-education__list-item,
-.experience-items,
 .skills-items,
-.portofolio-list__items,
-.contact-container {
+.portofolio-list__items {
   position: relative;
   border: 1px solid var(--border) !important;
   border-radius: var(--radius) !important;
@@ -428,20 +416,13 @@ textarea:focus-visible {
     background 250ms ease !important;
 }
 
-.about-education__list-item:hover,
-.experience-items:hover,
 .skills-items:hover,
-.portofolio-list__items:hover,
-.contact-container:hover {
+.portofolio-list__items:hover {
   background: var(--surface-hover) !important;
   border-color: var(--accent) !important;
   box-shadow: var(--glow) !important;
 }
 /* Override the old pink/purple radial hover fill */
-.about-education__list-item:hover,
-.experience-items:hover {
-  background-image: none !important;
-}
 .skills-items:hover {
   transform: translateY(-4px) !important;
   background-image: none !important;
@@ -449,26 +430,10 @@ textarea:focus-visible {
 .portofolio-list__items:hover {
   transform: translateY(-6px) !important;
 }
-
-.about-education__list-item-campus,
-.experience-items__job {
-  color: var(--text);
-  font-weight: 700;
-}
-.about-education__list-item-prodi,
-.experience-items__company {
-  color: var(--accent-3);
-  font-weight: 600;
-}
-.about-education__list-item-date,
-.experience-items__date,
-.experience-items__location,
 .skills-items__info-status,
 .portofolio-list__items-date {
   color: var(--text-muted);
 }
-.about-education__list-item-description,
-.experience-items__description,
 .portofolio-list__items-description,
 .detail-project__content-description {
   color: var(--text-muted);
@@ -575,22 +540,6 @@ textarea:focus-visible {
   color: #fff;
   background: var(--gradient);
   box-shadow: 0 6px 16px -6px rgba(124, 108, 246, 0.8);
-}
-
-.portofolio-search-input {
-  background: var(--surface) !important;
-  border: 1px solid var(--border) !important;
-  color: var(--text) !important;
-  font-size: 16px !important;
-  padding: 0 22px;
-  transition: border-color 200ms ease, box-shadow 200ms ease;
-}
-.portofolio-search-input:focus {
-  border-color: var(--accent) !important;
-  box-shadow: var(--glow) !important;
-}
-.portofolio-search-input::placeholder {
-  color: var(--text-muted) !important;
 }
 .portofolio-searchempty-text {
   color: var(--text-muted);
@@ -1160,5 +1109,60 @@ textarea:focus-visible {
   .navbar .navbar-toggler,
   .navbar .navbar-collapse {
     display: none !important;
+  }
+}
+
+/* ---------- Skip link + back to top ---------- */
+.skip-link {
+  position: fixed;
+  top: -64px;
+  left: 12px;
+  z-index: 3000;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: top 200ms ease;
+}
+.skip-link:focus {
+  top: 12px;
+  color: #fff;
+}
+.main-content:focus {
+  outline: none;
+}
+
+.back-to-top {
+  position: fixed;
+  right: 18px;
+  bottom: 24px;
+  z-index: 1400;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+  background: var(--nav-bg);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: background 200ms ease, border-color 200ms ease, color 200ms ease;
+}
+.back-to-top:hover {
+  background: var(--accent);
+  border-color: transparent;
+  color: #fff;
+}
+@media (max-width: 991.98px) {
+  /* sit above the floating tab bar */
+  .back-to-top {
+    bottom: calc(92px + env(safe-area-inset-bottom, 0px));
+    right: 14px;
   }
 }

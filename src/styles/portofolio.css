@@ -177,17 +177,6 @@
   text-align: start;
 }
 
-.detail-project__content-action {
-  width: 100%;
-  position: relative;
-  bottom: 0;
-  display: flex;
-  justify-content: start;
-  align-content: start;
-  flex-direction: column;
-  margin-top: 16px;
-}
-
 .portofolio-search-container {
   display: flex;
   justify-content: start;
@@ -197,26 +186,6 @@
   height: auto;
   overflow: hidden;
   padding-top: 13px;
-}
-.portofolio-search-item {
-  width: 100%;
-  height: 44px;
-  border-radius: 50px !important;
-}
-
-.portofolio-search-input {
-  width: 100%;
-  height: 44px;
-  background: transparent !important;
-  border: 1px solid #393939 !important;
-  border-radius: 50px !important;
-  outline: none;
-  font-size: 22px;
-  color: #f9f3f3 !important;
-}
-
-.portofolio-search-input::placeholder {
-  color: #f9f3f3 !important;
 }
 
 .portofolio-searchempty-container {

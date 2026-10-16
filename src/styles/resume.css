@@ -32,14 +32,6 @@
   text-transform: capitalize;
 }
 
-.resume-online-preview {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-bottom: 50px;
-  margin-top: 50px;
-}
-
 /* ---------- Header ---------- */
 .resume-header {
   display: flex;

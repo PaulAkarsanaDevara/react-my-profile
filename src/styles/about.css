@@ -13,23 +13,6 @@
   overflow: hidden;
   margin-bottom: 5em;
 }
-.about-sertifikasi-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: auto;
-  overflow: hidden;
-  margin-bottom: 5em;
-}
-
-.about-skills-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: auto;
-  overflow: hidden;
-  margin-bottom: 3em;
-}
 
 .profile-info-bio {
   display: flex;
@@ -85,26 +68,6 @@
   /* margin-bottom: 3em; */
 }
 
-.profile-summary .profile-summary__heading {
-  font-family: Poppins;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 27px;
-  margin-bottom: 13px;
-  text-transform: capitalize;
-}
-
-.profile-summary .profile-summary__text {
-  color: #fff;
-  text-align: justify;
-  font-family: Poppins;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 33.3px;
-}
-
 /* 
   profile-summary__action
 */
@@ -115,92 +78,6 @@
   overflow: hidden;
   margin-top: 30px;
   margin-bottom: 30px;
-}
-
-.profile-summary__action .profile-summary__action__button {
-  color: var(--Background, #fff);
-  font-family: Poppins;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 28px;
-  border-radius: 12px;
-  background: var(--Primary-600, #d71149);
-}
-
-.about-education__list {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: auto;
-  overflow: hidden;
-  padding-top: 20px;
-}
-
-.about-education__list-item {
-  padding: 20px;
-  margin-bottom: 30px;
-  width: 100%;
-  height: auto;
-  overflow: hidden;
-  border-radius: 12px;
-  border: 1px solid #393939;
-  background-color: transparent;
-  transition: all 500ms ease-in-out;
-}
-
-.about-education__list-item:hover {
-  opacity: 1;
-  background: rgb(215, 17, 73);
-  background: radial-gradient(
-    circle,
-    rgba(215, 17, 73, 1) 0%,
-    rgba(113, 100, 237, 1) 100%
-  );
-}
-
-.about-education__list-item-campus {
-  color: var(--Font-600, #fff);
-  font-family: Poppins;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 28px;
-}
-
-.about-education__list-item-prodi {
-  color: var(--Font-600, #fff);
-  font-family: Poppins;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 28px;
-}
-
-.about-education__list-item-date {
-  color: var(--Font-600, #fff);
-  font-family: Poppins;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 300;
-  line-height: 28px;
-}
-
-.about-education__list-item-description {
-  padding-top: 20px;
-  padding-bottom: 20px;
-
-  align-self: stretch;
-  overflow: hidden;
-  color: rgba(255, 255, 255, 0.8);
-
-  text-align: start;
-  text-overflow: ellipsis;
-  font-family: Poppins;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 150%; /* 18px */
 }
 
 .sertifikasi-list {
@@ -246,22 +123,6 @@
   justify-content: center;
   gap: 3px;
   padding-top: 13px;
-}
-
-.skills-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.skills-heading {
-  font-family: Poppins;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 27px;
-  margin-bottom: 13px;
-  text-transform: capitalize;
 }
 
 .skills-items-list {
