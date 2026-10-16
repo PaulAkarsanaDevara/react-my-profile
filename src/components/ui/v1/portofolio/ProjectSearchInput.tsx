@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { InputGroup, Form } from 'react-bootstrap';
+import { FiSearch, FiX } from 'react-icons/fi';
 
 type ProjectSearchInputProps = {
   keyword: string;
@@ -13,20 +13,29 @@ const ProjectSearchInput: React.FC<ProjectSearchInputProps> = ({
   keywordChange,
 }) => {
   return (
-    <>
-      <div className="portofolio-search-container">
-        <InputGroup className="portofolio-search-item ">
-          <Form.Control
-            type="search"
-            value={keyword}
-            onChange={(e) => keywordChange(e.target.value)}
-            placeholder={placeholder}
-            aria-label={placeholder}
-            className="portofolio-search-input"
-          />
-        </InputGroup>
+    <div className="portofolio-search-container">
+      <div className="project-search">
+        <FiSearch className="project-search__icon" size={18} aria-hidden />
+        <input
+          type="text"
+          value={keyword}
+          onChange={(e) => keywordChange(e.target.value)}
+          placeholder={placeholder}
+          aria-label={placeholder}
+          className="project-search__input"
+        />
+        {keyword && (
+          <button
+            type="button"
+            className="project-search__clear"
+            onClick={() => keywordChange('')}
+            aria-label="Hapus pencarian"
+          >
+            <FiX size={16} />
+          </button>
+        )}
       </div>
-    </>
+    </div>
   );
 };
 

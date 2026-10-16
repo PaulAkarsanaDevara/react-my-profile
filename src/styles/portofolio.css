@@ -362,3 +362,137 @@
   margin: 0 0 8px;
   color: var(--text-muted);
 }
+
+/* ---------- Redesign: portfolio toolbar ---------- */
+.project-lead {
+  max-width: 520px;
+  margin: 8px 0 14px;
+  color: var(--text-muted);
+  font-size: 15.5px;
+  line-height: 1.7;
+}
+
+.project-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.project-search__icon {
+  position: absolute;
+  left: 18px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+.project-search__input {
+  width: 100%;
+  height: 50px;
+  padding: 0 46px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+.project-search__input::placeholder {
+  color: var(--text-muted);
+}
+.project-search__input:focus {
+  border-color: var(--accent);
+  box-shadow: var(--glow);
+}
+.project-search__clear {
+  position: absolute;
+  right: 10px;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--surface-hover);
+  color: var(--text);
+  cursor: pointer;
+}
+.project-search__clear:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.project-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 20px 0 4px;
+}
+.project-toolbar__count {
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.project-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.project-filter__chip {
+  position: relative;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 200ms ease, border-color 200ms ease;
+}
+.project-filter__chip:hover {
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+.project-filter__chip.is-active {
+  color: #fff;
+  border-color: transparent;
+}
+.project-filter__pill {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: var(--accent);
+}
+.project-filter__label {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.project-filter__count {
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--surface-hover);
+  font-size: 12px;
+}
+.project-filter__chip.is-active .project-filter__count {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.portofolio-list__items-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: auto 14px 12px;
+  color: var(--accent);
+  font-size: 13.5px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: gap 200ms ease;
+}
+.portofolio-list__items:hover .portofolio-list__items-more {
+  gap: 13px;
+}

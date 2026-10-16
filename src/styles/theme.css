@@ -834,3 +834,7 @@ textarea:focus-visible {
   color: var(--text-muted);
   line-height: 1.7;
 }
+
+.portofolio-list {
+  justify-content: flex-start;
+}

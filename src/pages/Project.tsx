@@ -1,30 +1,48 @@
-import { MyComponentInstance } from '../components/ui/shared/MyComponent';
-import { useEffect, useState } from 'react';
+import { Suspense, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { MyComponentInstance } from '../components/ui/shared/MyComponent';
+import ProjectFilter from '../components/ui/v1/portofolio/ProjectFilter';
 import HTML from '../components/ui/shared/HTML';
 import projects from '../models/Project';
 
-const Project: React.FC = () => {
-  const [items, setItems] = useState<Project[]>([]);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [keyword, setKeyword] = useState(
-    () => searchParams.get('search') || ''
-  );
+const ALL = 'All';
 
-  const onKeywordChangeHandler: (keyword: string) => void = (
-    keyword: string
-  ) => {
-    setKeyword(keyword);
-    setSearchParams({ search: keyword });
+const types = [
+  { name: ALL, count: projects.length },
+  ...Array.from(new Set(projects.map((project) => project.type))).map(
+    (name) => ({
+      name,
+      count: projects.filter((project) => project.type === name).length,
+    })
+  ),
+];
+
+const Project: React.FC = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const keyword = searchParams.get('search') || '';
+  const requestedType = searchParams.get('type') || ALL;
+  const type = types.some((t) => t.name === requestedType)
+    ? requestedType
+    : ALL;
+
+  const updateParams = (next: { search?: string; type?: string }) => {
+    const params = new URLSearchParams(searchParams);
+    Object.entries(next).forEach(([key, value]) => {
+      if (value && value !== ALL) params.set(key, value);
+      else params.delete(key);
+    });
+    setSearchParams(params, { replace: true });
   };
 
-  useEffect(() => {
-    const projectList: Project[] = projects?.filter((filteredData) =>
-      filteredData.name.toLowerCase().includes(keyword.toLowerCase())
-    );
-
-    setItems(projectList);
-  }, [keyword]);
+  const items: Project[] = useMemo(
+    () =>
+      projects.filter(
+        (project) =>
+          (type === ALL || project.type === type) &&
+          project.name.toLowerCase().includes(keyword.toLowerCase())
+      ),
+    [keyword, type]
+  );
 
   return (
     <>
@@ -36,14 +54,32 @@ const Project: React.FC = () => {
 
       <div className="portofolio-container ">
         <MyComponentInstance.Heading title="Project" />
+        <p className="project-lead">
+          Kumpulan proyek yang pernah saya kerjakan, dari frontend sampai
+          DevOps.
+        </p>
         <hr className="text-secondary" />
 
         <MyComponentInstance.ProjectSearchInput
-          placeholder="Search project..."
+          placeholder="Cari proyek..."
           keyword={keyword}
-          keywordChange={onKeywordChangeHandler}
+          keywordChange={(value) => updateParams({ search: value })}
         />
-        <MyComponentInstance.ProjectListItem items={items} />
+
+        <div className="project-toolbar">
+          <ProjectFilter
+            types={types}
+            active={type}
+            onChange={(next) => updateParams({ type: next })}
+          />
+          <div className="project-toolbar__count" aria-live="polite">
+            {items.length} proyek
+          </div>
+        </div>
+
+        <Suspense fallback={null}>
+          <MyComponentInstance.ProjectListItem items={items} />
+        </Suspense>
       </div>
     </>
   );

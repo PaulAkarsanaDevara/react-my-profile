@@ -1,6 +1,7 @@
 import React from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Link } from 'react-router-dom';
+import { FaArrowRight } from 'react-icons/fa';
 import { postedAt } from '../../../../utils/formattedDate';
 
 type ProjectItemProps = Project;
@@ -30,6 +31,13 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
     </div>
     <div className="portofolio-list__items-name">{name}</div>
     <div className="portofolio-list__items-description">{description}</div>
+    <Link
+      to={`/porto/${id}/project`}
+      className="portofolio-list__items-more"
+      aria-label={`Lihat detail ${name}`}
+    >
+      Lihat detail <FaArrowRight size={11} />
+    </Link>
   </div>
 );
 
