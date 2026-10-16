@@ -5,6 +5,7 @@ import { MyComponentInstance } from '../components/ui/shared/MyComponent';
 import AmbientBackground from '../components/ui/shared/motion/AmbientBackground';
 import PageTransition from '../components/ui/shared/motion/PageTransition';
 import ScrollProgress from '../components/ui/shared/motion/ScrollProgress';
+import MobileTabBar from '../components/ui/shared/navbar/MobileTabBar';
 
 const RootLayout: React.FC = () => {
   return (
@@ -26,6 +27,7 @@ const RootLayout: React.FC = () => {
       <Suspense fallback={null}>
         <MyComponentInstance.BottomNavigation />
       </Suspense>
+      <MobileTabBar />
     </MotionConfig>
   );
 };

@@ -1087,3 +1087,78 @@ textarea:focus-visible {
   line-height: 1.4;
   background: var(--surface);
 }
+
+/* ---------- Mobile bottom tab bar ---------- */
+.mobile-tabbar {
+  display: none;
+}
+
+@media (max-width: 991.98px) {
+  body {
+    /* room for the floating tab bar so it never covers the footer */
+    padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .mobile-tabbar {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    z-index: 1500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2px;
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 6px;
+    border-radius: 22px;
+    border: 1px solid var(--border-strong);
+    background: var(--nav-bg);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    backdrop-filter: blur(18px) saturate(160%);
+    box-shadow: 0 14px 40px -12px rgba(0, 0, 0, 0.7);
+  }
+
+  .mobile-tabbar__item {
+    position: relative;
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+    padding: 8px 2px;
+    border-radius: 16px;
+    color: var(--text-muted);
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: color 200ms ease;
+  }
+  .mobile-tabbar__item.active {
+    color: #fff;
+  }
+  .mobile-tabbar__pill {
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    background: var(--accent);
+    box-shadow: 0 8px 20px -8px var(--accent);
+  }
+  .mobile-tabbar__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+  }
+  .mobile-tabbar__label {
+    font-size: 10.5px;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  /* the tab bar replaces the hamburger menu */
+  .navbar .navbar-toggler,
+  .navbar .navbar-collapse {
+    display: none !important;
+  }
+}
