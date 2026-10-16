@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { MyComponentInstance } from '../../shared/MyComponent';
-import LogoSearchEmpty from '/icons/hand-drawn-no-data-illustration.png';
+import LogoSearchEmpty from '/icons/hand-drawn-no-data-illustration.webp';
 
 type ProjectListItemProps = { items: Project[] };
 

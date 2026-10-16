@@ -1223,3 +1223,28 @@ textarea:focus-visible {
     opacity: 1;
   }
 }
+
+/* ---------- PWA install button (footer) ---------- */
+.footer-container {
+  flex-wrap: wrap;
+  gap: 8px 18px;
+}
+.footer-install {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 200ms ease, border-color 200ms ease, color 200ms ease;
+}
+.footer-install:hover {
+  background: var(--accent);
+  border-color: transparent;
+  color: #fff;
+}
