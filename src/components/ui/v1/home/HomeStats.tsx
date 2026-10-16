@@ -1,6 +1,6 @@
 import Reveal from '../../shared/motion/Reveal';
 import projects from '../../../../models/Project';
-import certificates from '../../../../models/Certificate';
+import { activeCertificates as certificates } from '../../../../models/Certificate';
 import education from '../../../../models/Education';
 import { experience } from '../../../../models/Experience';
 

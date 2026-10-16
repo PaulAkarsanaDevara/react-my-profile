@@ -1,5 +1,15 @@
 const certificates: Certificate[] = [
   {
+    idSertifikat: 'bnsp-analis-program',
+    title: 'Sertifikat Kompetensi BNSP - Analis Program',
+    image: '/images/sertifikat_kompetensi_bnsp.webp',
+    link: null,
+    startDate: '7 Agustus 2023',
+    endDate: '7 Agustus 2026',
+    pdfPreview: undefined,
+    keepWhenExpired: true,
+  },
+  {
     idSertifikat: '6892070',
     title: 'Magang MSIB - Full Stack Developer',
     image: '/images/sertifikat_magang_msib_5.webp',
@@ -127,5 +137,15 @@ const certificates: Certificate[] = [
     pdfPreview: '/uploads/sertifikat_course_266_1290476_080324004840.pdf',
   },
 ];
+
+const isActive = (certificate: Certificate) => {
+  if (certificate.keepWhenExpired) return true;
+  const expires = new Date(certificate.endDate);
+  // "-" or anything unparsable means the certificate does not expire
+  return Number.isNaN(expires.getTime()) || expires.getTime() >= Date.now();
+};
+
+/** Certificates that are still valid (expired courses are hidden). */
+export const activeCertificates = certificates.filter(isActive);
 
 export default certificates;

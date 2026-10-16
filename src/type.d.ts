@@ -6,6 +6,8 @@ interface Certificate {
   startDate: string;
   endDate: string;
   pdfPreview: string | undefined;
+  /** Keep showing after `endDate` has passed (e.g. a professional certification). */
+  keepWhenExpired?: boolean;
 }
 
 interface Project {
