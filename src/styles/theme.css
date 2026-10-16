@@ -738,3 +738,99 @@ textarea:focus-visible {
   color: var(--text-muted);
   line-height: 1.7;
 }
+
+/* ---------- Home sections ---------- */
+.home-container {
+  margin-bottom: 2.5em;
+}
+.home-stats {
+  margin-bottom: 0;
+}
+.home-section {
+  margin-top: 72px;
+}
+.home-section__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.home-section__head .resume-item__heading {
+  margin-bottom: 0;
+}
+.home-section__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 200ms ease, gap 200ms ease;
+}
+.home-section__link:hover {
+  color: var(--accent);
+  gap: 12px;
+}
+
+.marquee {
+  display: flex;
+  overflow: hidden;
+  padding: 8px 0;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee__track {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 14px;
+  min-width: 100%;
+  margin: 0;
+  padding: 0 7px;
+  list-style: none;
+  align-items: center;
+  justify-content: space-around;
+  animation: marquee-scroll 38s linear infinite;
+}
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
+.marquee__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+@keyframes marquee-scroll {
+  to { transform: translateX(-100%); }
+}
+
+.home-cta {
+  margin: 72px 0 24px;
+  padding: 48px 24px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  text-align: center;
+}
+.home-cta__title {
+  margin: 0 0 10px;
+  color: var(--text);
+  font-size: clamp(24px, 4vw, 34px);
+  font-weight: 800;
+}
+.home-cta__text {
+  max-width: 460px;
+  margin: 0 auto 24px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
