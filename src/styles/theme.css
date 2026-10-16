@@ -1248,3 +1248,17 @@ textarea:focus-visible {
   border-color: transparent;
   color: #fff;
 }
+
+/* Skill without icon or image: letter badge */
+.skills-items__initial {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 800;
+}

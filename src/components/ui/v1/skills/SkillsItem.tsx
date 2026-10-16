@@ -1,6 +1,6 @@
 import React from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import skillIcons from './skillIcons';
+import techIcons from './techIcons';
 
 type IProps = Skills;
 
@@ -11,7 +11,7 @@ const LEVELS: Record<string, number> = {
 };
 
 const SkillsItem: React.FC<IProps> = ({ title, description, image }) => {
-  const icon = skillIcons[title];
+  const icon = techIcons[title];
   const level = LEVELS[description] ?? 0;
 
   return (
@@ -41,7 +41,7 @@ const SkillsItem: React.FC<IProps> = ({ title, description, image }) => {
           color={icon.color}
           aria-label={title}
         />
-      ) : (
+      ) : image ? (
         <LazyLoadImage
           src={image}
           alt={title}
@@ -49,6 +49,10 @@ const SkillsItem: React.FC<IProps> = ({ title, description, image }) => {
           effect="blur"
           className="skills-items__image"
         />
+      ) : (
+        <span className="skills-items__initial" aria-hidden="true">
+          {title.charAt(0)}
+        </span>
       )}
     </div>
   );

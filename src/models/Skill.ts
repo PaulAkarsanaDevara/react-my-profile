@@ -41,6 +41,12 @@ const skills: Skills[] = [
     image: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/Dart-logo.png',
   },
   {
+    title: 'Shell Script',
+    description: 'Beginner',
+    category: 'Programming Languages',
+    image: '',
+  },
+  {
     title: 'React.JS',
     description: 'Professional',
     category: 'Framework',
@@ -118,6 +124,36 @@ const skills: Skills[] = [
   },
 
   {
+    title: 'Redux',
+    description: 'Intermediate',
+    category: 'Framework',
+    image: '',
+  },
+  {
+    title: 'Framer Motion',
+    description: 'Beginner',
+    category: 'Framework',
+    image: '',
+  },
+  {
+    title: 'Recharts',
+    description: 'Beginner',
+    category: 'Framework',
+    image: '',
+  },
+  {
+    title: 'Leaflet',
+    description: 'Beginner',
+    category: 'Framework',
+    image: '',
+  },
+  {
+    title: 'Zod',
+    description: 'Beginner',
+    category: 'Framework',
+    image: '',
+  },
+  {
     title: 'VSCODE',
     description: 'Professional',
     category: 'Tools',
@@ -150,6 +186,72 @@ const skills: Skills[] = [
     category: 'Tools',
     image:
       'https://upload.wikimedia.org/wikipedia/commons/2/26/Logo-composer-transparent.png',
+  },
+  {
+    title: 'Vite',
+    description: 'Intermediate',
+    category: 'Tools',
+    image: '',
+  },
+  {
+    title: 'Vercel',
+    description: 'Intermediate',
+    category: 'Tools',
+    image: '',
+  },
+  {
+    title: 'PWA',
+    description: 'Intermediate',
+    category: 'Tools',
+    image: '',
+  },
+  {
+    title: 'Docker',
+    description: 'Beginner',
+    category: 'Tools',
+    image: '',
+  },
+  {
+    title: 'Kubernetes',
+    description: 'Beginner',
+    category: 'Tools',
+    image: '',
+  },
+  {
+    title: 'Jenkins',
+    description: 'Beginner',
+    category: 'Tools',
+    image: '',
+  },
+  {
+    title: 'Linux',
+    description: 'Beginner',
+    category: 'Tools',
+    image: '',
+  },
+  {
+    title: 'Redis',
+    description: 'Beginner',
+    category: 'Tools',
+    image: '',
+  },
+  {
+    title: 'Vitest',
+    description: 'Beginner',
+    category: 'Tools',
+    image: '',
+  },
+  {
+    title: 'Prometheus',
+    description: 'Beginner',
+    category: 'Tools',
+    image: '',
+  },
+  {
+    title: 'Grafana',
+    description: 'Beginner',
+    category: 'Tools',
+    image: '',
   },
 ];
 

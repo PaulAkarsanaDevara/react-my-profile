@@ -1,13 +1,13 @@
 import skills from '../../../../models/Skill';
-import skillIcons from '../skills/skillIcons';
+import techIcons from '../skills/techIcons';
 import SectionHead from './SectionHead';
 
-const items = skills.filter((skill) => skillIcons[skill.title]);
+const items = skills.filter((skill) => techIcons[skill.title]);
 
 const Track = ({ hidden }: { hidden?: boolean }) => (
   <ul className="marquee__track" aria-hidden={hidden}>
     {items.map((skill) => {
-      const { Icon, color } = skillIcons[skill.title];
+      const { Icon, color } = techIcons[skill.title];
       return (
         <li className="marquee__item" key={skill.title}>
           <Icon size={22} color={color} />
