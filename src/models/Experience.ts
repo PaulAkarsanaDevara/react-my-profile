@@ -12,7 +12,10 @@ const experience: Experience[] = [
 - Report builder and exports: built a report builder (report types and access) and fixed Excel exports that would not open in newer Excel, across inventory, billing and pharmacy reports.
 - Laboratory integration: built a pluggable framework that pulls results from external lab information systems and analyzers into the system. Integrated LIS Wynacom, LIS Sysmex, LIS BBM, LIS Mlabs, LIS Vanslab and LIS Medisynclab, with scheduled auto-sync, a sync-state table and a monitoring screen. Also fixed duplicate results coming from the analyzer sync.
 - Radiology integration: integrated Medipacs/Orthanc and PACS Thena. Built the layer that links imaging studies to orders by accession number, using webhooks and scheduled sync, with safe fallback matching when numbers are missing. Added order logs and monitoring for it, and extended the HL7 worklist integration the team already had.
-- Pharmacy: prescription validation, final and outpatient prescriptions, invoices, and print layouts.
+- Pharmacy: worked on the prescription modules: prescription validation, final prescriptions, outpatient (external) prescriptions with returns and invoices, queue numbers with prefixes, daily-dose lists, and print layouts. Added the online pharmacy (APOL) history and bulk sending, and created the doctor prescription templates module.
+- Nutrition assessment: built a child nutrition-status assessment module from scratch (tables, screens and rules based on weight, length and BMI), and added the BMI score to the patient header.
+- Breast-milk labels: built the breast-milk label printing module end to end, from the table and screens to the PDF label.
+- Diet labels and reports: built configurable diet-label printing (templates, text, packaging times, allergy warnings) and configurable diet report columns with Excel and PDF output. Added multi-meal diets and allergy tracking to inpatient diet orders.
 - Security: added forced password change on first login and a limit on active sessions per user.
 - Wrote automated tests for some lab, radiology and invoice features.`,
   },
