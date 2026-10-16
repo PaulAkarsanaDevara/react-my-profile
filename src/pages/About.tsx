@@ -1,18 +1,14 @@
 import { MyComponentInstance } from '../components/ui/shared/MyComponent';
 import HTML from '../components/ui/shared/HTML';
-import SkillsItemList from '../components/ui/v1/skills/SkillsItemList';
-import skills from '../models/Skill';
+import QuickFacts from '../components/ui/v1/about/QuickFacts';
+import WhatIDo from '../components/ui/v1/about/WhatIDo';
+import SkillsTabs from '../components/ui/v1/about/SkillsTabs';
+import Journey from '../components/ui/v1/about/Journey';
+import SectionHead from '../components/ui/v1/home/SectionHead';
+import HomeCta from '../components/ui/v1/home/HomeCta';
+import '../styles/resume.css';
 
 const About = () => {
-  const programmingSkills = skills?.filter(
-    (skill) => skill.category === 'Programming Languages'
-  );
-
-  const frameworkSkills = skills?.filter(
-    (skill) => skill.category === 'Framework'
-  );
-  const toolsSkills = skills?.filter((skill) => skill.category === 'Tools');
-
   return (
     <>
       <HTML
@@ -34,29 +30,17 @@ const About = () => {
           />
         </div>
 
-        <div className="about-skills-container">
-          <MyComponentInstance.Heading title="Skills" />
+        <QuickFacts />
+        <WhatIDo />
+        <SkillsTabs />
+        <Journey />
 
-          <div className="skills-container">
-            <div className="skills-proglang pt-3">
-              <h3 className="skills-heading">Programming Languages</h3>
-
-              <SkillsItemList skills={programmingSkills} />
-            </div>
-            <div className="skills-framework pt-3">
-              <h3 className="skills-heading">Framework</h3>
-              <SkillsItemList skills={frameworkSkills} />
-            </div>
-            <div className="skills-tools pt-3">
-              <h3 className="skills-heading">Tools</h3>
-              <SkillsItemList skills={toolsSkills} />
-            </div>
-          </div>
-        </div>
-        <div className="about-sertifikasi-container">
-          <MyComponentInstance.Heading title="Certifications & Awards" />
+        <section className="about-section">
+          <SectionHead title="Certifications & Awards" />
           <MyComponentInstance.SertifikasiListItem />
-        </div>
+        </section>
+
+        <HomeCta />
       </div>
     </>
   );

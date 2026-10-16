@@ -28,6 +28,7 @@ const SertifikasiItem: React.FC<SertifikasiItemProps> = ({
         className="sertifikasi-list__item-image"
         onClick={() => showChange(show)}
       />
+      <div className="sertifikasi-list__item-caption">{title}</div>
     </div>
   );
 };
