@@ -41,6 +41,12 @@ const skills: Skills[] = [
     image: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/Dart-logo.png',
   },
   {
+    title: 'Go',
+    description: 'Intermediate',
+    category: 'Programming Languages',
+    image: '',
+  },
+  {
     title: 'Shell Script',
     description: 'Beginner',
     category: 'Programming Languages',
@@ -201,6 +207,12 @@ const skills: Skills[] = [
   },
   {
     title: 'PWA',
+    description: 'Intermediate',
+    category: 'Tools',
+    image: '',
+  },
+  {
+    title: 'PostgreSQL',
     description: 'Intermediate',
     category: 'Tools',
     image: '',

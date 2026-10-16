@@ -1,6 +1,7 @@
 import { IconType } from 'react-icons';
 import {
   SiDocker,
+  SiGo,
   SiJenkins,
   SiKubernetes,
   SiLaravel,
@@ -11,6 +12,7 @@ import {
   SiTailwindcss,
   SiVuedotjs,
   SiMysql,
+  SiPostgresql,
   SiCodeigniter,
 } from 'react-icons/si';
 import { FaCode, FaServer, FaCogs } from 'react-icons/fa';
@@ -39,12 +41,14 @@ const services: Service[] = [
   {
     icon: <FaServer size={19} />,
     title: 'Backend',
-    text: 'The server side and the database. Laravel and Node.js so far.',
+    text: 'The server side and the database. Mostly Laravel and Go these days.',
     tech: [
       { name: 'Laravel', Icon: SiLaravel },
-      { name: 'CodeIgniter', Icon: SiCodeigniter },
+      { name: 'Go', Icon: SiGo },
       { name: 'Node.js', Icon: SiNodedotjs },
+      { name: 'PostgreSQL', Icon: SiPostgresql },
       { name: 'MySQL', Icon: SiMysql },
+      { name: 'CodeIgniter', Icon: SiCodeigniter },
     ],
   },
   {

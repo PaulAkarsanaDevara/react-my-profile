@@ -3,11 +3,13 @@ import {
   SiDocker,
   SiFramer,
   SiGnubash,
+  SiGo,
   SiGrafana,
   SiJenkins,
   SiKubernetes,
   SiLeaflet,
   SiLinux,
+  SiPostgresql,
   SiPrometheus,
   SiPwa,
   SiRedis,
@@ -48,6 +50,8 @@ const techIcons: Record<string, TechIcon> = {
   Zod: { Icon: SiZod, color: '#3068b7' },
   'Framer Motion': { Icon: SiFramer, color: '#0055ff' },
   Vite: { Icon: SiVite, color: '#646cff' },
+  Go: { Icon: SiGo, color: '#00add8' },
+  PostgreSQL: { Icon: SiPostgresql, color: '#4169e1' },
 };
 
 export default techIcons;
