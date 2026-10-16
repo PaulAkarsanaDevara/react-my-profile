@@ -29,8 +29,8 @@ const milestones = [
   },
   {
     year: '2024',
-    title: 'Graduated & Full Stack Developer',
-    place: 'GPA 3.91 · PT Winni Code Garuda Indonesia',
+    title: 'Graduated, joined Alfatih Solusindo Technology',
+    place: 'GPA 3.91 · Full Stack Developer',
   },
   {
     year: '2026',
