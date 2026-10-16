@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaGithub, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
+import { FiCheck, FiCopy } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import { MyComponentInstance } from '../components/ui/shared/MyComponent';
 import ContactFormInput from '../components/ui/v1/contacts/ContactFormInput';
@@ -25,6 +26,56 @@ const channels = [
     icon: <FaGithub size={20} />,
   },
 ];
+
+type Channel = (typeof channels)[number];
+
+const ChannelCard: React.FC<{ channel: Channel; index: number }> = ({
+  channel,
+  index,
+}) => {
+  const [copied, setCopied] = useState(false);
+
+  const copyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(channel.href);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    } catch {
+      /* clipboard unavailable (insecure context / denied) */
+    }
+  };
+
+  return (
+    <motion.div
+      className="contact-channel"
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.25 + index * 0.1, duration: 0.5 }}
+    >
+      <a
+        href={channel.href}
+        target="_blank"
+        rel="noreferrer"
+        className="contact-channel__link"
+      >
+        <span className="contact-channel__icon">{channel.icon}</span>
+        <span>
+          <span className="contact-channel__title">{channel.title}</span>
+          <span className="contact-channel__detail">{channel.detail}</span>
+        </span>
+      </a>
+      <button
+        type="button"
+        className="contact-channel__copy"
+        onClick={copyLink}
+        aria-label={`Salin link ${channel.title}`}
+        title={copied ? 'Tersalin!' : 'Salin link'}
+      >
+        {copied ? <FiCheck size={16} /> : <FiCopy size={16} />}
+      </button>
+    </motion.div>
+  );
+};
 
 const Contact: React.FC = () => {
   return (
@@ -53,28 +104,13 @@ const Contact: React.FC = () => {
 
             <div className="contact-info__channels">
               {channels.map((channel, index) => (
-                <motion.a
-                  key={channel.title}
-                  href={channel.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="contact-channel"
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.25 + index * 0.1, duration: 0.5 }}
-                >
-                  <span className="contact-channel__icon">{channel.icon}</span>
-                  <span>
-                    <span className="contact-channel__title">
-                      {channel.title}
-                    </span>
-                    <span className="contact-channel__detail">
-                      {channel.detail}
-                    </span>
-                  </span>
-                </motion.a>
+                <ChannelCard key={channel.title} channel={channel} index={index} />
               ))}
             </div>
+
+            <p className="contact-info__note">
+              Pesan dari form dikirim langsung ke email saya.
+            </p>
           </motion.div>
 
           <motion.div
