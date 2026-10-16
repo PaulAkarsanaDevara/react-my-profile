@@ -9,7 +9,6 @@ export const id: Record<Key, string> = {
   'nav.contact': 'Kontak',
   'nav.aria': 'Navigasi utama',
   'skip': 'Lewati ke konten',
-  'footer.built': 'Dibuat dengan React & Framer Motion',
   'footer.install': 'Pasang aplikasi',
   'theme.toggle': 'Ganti tema',
   'theme.toLight': 'Ganti ke mode terang',

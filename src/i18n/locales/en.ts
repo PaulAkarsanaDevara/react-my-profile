@@ -7,7 +7,6 @@ export const en = {
   'nav.contact': 'Contact',
   'nav.aria': 'Main navigation',
   'skip': 'Skip to content',
-  'footer.built': 'Built with React & Framer Motion',
   'footer.install': 'Install app',
   'theme.toggle': 'Toggle theme',
   'theme.toLight': 'Switch to light mode',

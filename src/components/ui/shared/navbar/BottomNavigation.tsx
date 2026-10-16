@@ -9,7 +9,7 @@ const BottomNavigation = () => {
   return (
     <footer className="footer-container">
       <div className="footer-text-copy">
-        © {new Date().getFullYear()} Farhan · {t('footer.built')}
+        © {new Date().getFullYear()} Farhan
       </div>
       {canInstall && (
         <button type="button" className="footer-install" onClick={install}>
