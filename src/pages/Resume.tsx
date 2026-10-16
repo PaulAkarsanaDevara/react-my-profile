@@ -9,12 +9,10 @@ import { useContent } from '../i18n/useContent';
 const Resume = () => {
   const { t } = useI18n();
   const { education, experience } = useContent();
-  const gpa = education.find((edu) => edu.ipk !== '')?.ipk;
 
   const stats = [
     { value: experience.length, label: t('stat.experiences') },
     { value: education.length, label: t('stat.education') },
-    ...(gpa ? [{ value: gpa, label: t('stat.gpa') }] : []),
   ];
 
   return (

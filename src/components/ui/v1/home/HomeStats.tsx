@@ -1,18 +1,14 @@
 import Reveal from '../../shared/motion/Reveal';
 import projects from '../../../../models/Project';
 import { activeCertificates as certificates } from '../../../../models/Certificate';
-import education from '../../../../models/Education';
 import { experience } from '../../../../models/Experience';
 import { useI18n } from '../../../../i18n/useI18n';
 import type { Key } from '../../../../i18n/locales/en';
 
-const gpa = education.find((edu) => edu.ipk !== '')?.ipk;
-
-const stats: { value: number | string; label: Key }[] = [
+const stats: { value: number; label: Key }[] = [
   { value: projects.length, label: 'stat.projects' },
   { value: experience.length, label: 'stat.experiences' },
   { value: certificates.length, label: 'stat.certificates' },
-  ...(gpa ? [{ value: gpa, label: 'stat.gpa' as Key }] : []),
 ];
 
 const HomeStats = () => {
