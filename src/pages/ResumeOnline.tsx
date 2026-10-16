@@ -14,7 +14,7 @@ const ResumeOnline = () => {
     <>
       <HTML
         title="Online Resume - Farhan"
-        description="Read and download the online resume (CV) of Farhan, Full Stack Developer."
+        description="Read or download Farhan's resume (CV)."
         keywords="Resume, CV, Farhan, Farhan Portofolio"
       />
       <div className="resume-online-container">

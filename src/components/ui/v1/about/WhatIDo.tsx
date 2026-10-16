@@ -28,7 +28,7 @@ const services: Service[] = [
   {
     icon: <FaCode size={20} />,
     title: 'Frontend',
-    text: 'Responsive, accessible interfaces built with modern component-based frameworks.',
+    text: 'The part you see and click. Mostly React these days.',
     tech: [
       { name: 'React', Icon: SiReact },
       { name: 'Vue', Icon: SiVuedotjs },
@@ -39,7 +39,7 @@ const services: Service[] = [
   {
     icon: <FaServer size={19} />,
     title: 'Backend',
-    text: 'Web applications and APIs with solid database design and clean architecture.',
+    text: 'The server side and the database. Laravel and Node.js so far.',
     tech: [
       { name: 'Laravel', Icon: SiLaravel },
       { name: 'CodeIgniter', Icon: SiCodeigniter },
@@ -50,7 +50,7 @@ const services: Service[] = [
   {
     icon: <FaCogs size={19} />,
     title: 'DevOps',
-    text: 'Containerised deployments and CI/CD pipelines to ship changes reliably.',
+    text: 'Packaging and deploying apps with Docker, Jenkins and Kubernetes. Still learning.',
     tech: [
       { name: 'Docker', Icon: SiDocker },
       { name: 'Kubernetes', Icon: SiKubernetes },

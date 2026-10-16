@@ -45,7 +45,7 @@ const pwa = () =>
       name: 'Farhan — Full Stack Developer',
       short_name: 'Farhan',
       description:
-        'Portfolio of Farhan, a Full Stack Developer working across frontend, backend and DevOps.',
+        "Farhan's portfolio: web apps, work experience, skills and certificates.",
       lang: 'en',
       start_url: '/',
       scope: '/',

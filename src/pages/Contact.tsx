@@ -82,7 +82,7 @@ const Contact: React.FC = () => {
     <>
       <HTML
         title="Contact - Farhan"
-        description="Get in touch with Farhan for project collaboration, questions or opportunities."
+        description="Get in touch with Farhan about projects, questions or work."
         keywords="Portofolio, Farhan, Farhan Portofolio"
       />
       <div className="contacts-container">
@@ -96,10 +96,9 @@ const Contact: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
-            <h2 className="contact-info__title">Let&apos;s work together</h2>
+            <h2 className="contact-info__title">Get in touch</h2>
             <p className="contact-info__lead">
-              Punya proyek, pertanyaan, atau sekadar ingin menyapa? Kirim pesan
-              lewat form atau hubungi saya lewat kanal di bawah ini.
+              Ada proyek, pertanyaan, atau sekadar mau ngobrol? Kirim pesan lewat form, atau hubungi saya di salah satu kanal ini.
             </p>
 
             <div className="contact-info__channels">

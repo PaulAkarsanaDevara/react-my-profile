@@ -1,0 +1,3 @@
+/** Shared "About Me" summary, used on both Home and About. */
+export const aboutSummary =
+  "I'm an Informatics graduate from Bina Sarana Informatics University. I build websites, both the frontend and the backend, and I did a Full Stack Developer internship through the Merdeka Belajar Kampus Merdeka program. Lately I've been making web apps on my own: weather and earthquakes, movies, notes, prayer times, holidays, recipes, and a personal finance tracker. They're built with React, TypeScript and Tailwind, hosted on Vercel, and you can install them as PWAs. I've also tried Docker, Kubernetes and Jenkins in a few courses. I like picking up new things, and I'm fine working alone or with a team.";

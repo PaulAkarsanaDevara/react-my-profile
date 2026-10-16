@@ -50,15 +50,15 @@ const Project: React.FC = () => {
     <>
       <HTML
         title="Portfolio - Farhan"
-        description="Selected frontend and DevOps projects by Farhan, built with React, Vue, Flutter, Docker, Jenkins and Kubernetes."
+        description="Web apps and projects by Farhan, from personal apps to course work."
         keywords="Portofolio, Farhan, Farhan Portofolio"
       />
 
       <div className="portofolio-container ">
         <MyComponentInstance.Heading title="Project" />
         <p className="project-lead">
-          Kumpulan proyek yang pernah saya kerjakan, dari frontend sampai
-          DevOps.
+          Proyek yang pernah saya bikin, dari aplikasi sendiri sampai tugas
+          kursus.
         </p>
         <hr className="text-secondary" />
 

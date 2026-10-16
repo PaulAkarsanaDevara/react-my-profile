@@ -19,7 +19,7 @@ const Resume = () => {
     <>
       <HTML
         title="Resume - Farhan"
-        description="Resume of Farhan: work experience, internships and education as a Full Stack Developer."
+        description="Resume of Farhan: work experience and education."
         keywords="Portofolio, Farhan, Farhan Portofolio"
       />
 
@@ -28,8 +28,7 @@ const Resume = () => {
           <div>
             <MyComponentInstance.Heading title="Resume" />
             <p className="resume-header__lead">
-              Education and work experience — a quick look at where I studied
-              and what I have built.
+              Where I studied and where I have worked.
             </p>
           </div>
           <div className="resume-header__actions">

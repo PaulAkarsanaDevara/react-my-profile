@@ -1,5 +1,6 @@
 import { MyComponentInstance } from '../components/ui/shared/MyComponent';
 import HTML from '../components/ui/shared/HTML';
+import { aboutSummary } from '../models/About';
 import QuickFacts from '../components/ui/v1/about/QuickFacts';
 import WhatIDo from '../components/ui/v1/about/WhatIDo';
 import SkillsTabs from '../components/ui/v1/about/SkillsTabs';
@@ -12,7 +13,7 @@ const About = () => {
     <>
       <HTML
         title="About Me - Farhan"
-        description="About Farhan: an Informatics graduate and Full Stack Developer with skills in React, Laravel and DevOps, plus certifications and career journey."
+        description="About Farhan: Informatics graduate and Full Stack Developer. Skills, journey and certificates."
         keywords="Portofolio, Farhan, Farhan Portofolio"
       />
       <div className="about-container">
@@ -25,7 +26,7 @@ const About = () => {
 
           <MyComponentInstance.ProfileInfoAboutMe
             headingName="About Me"
-            summary="Informatics graduate from Bina Sarana Informatics University with experience in website development, both frontend and backend. During college, I participated in the Merdeka Belajar Kampus Merdeka program and worked as a Full Stack Developer. I have a high enthusiasm for learning new things with high initiative and am able to work independently or in a team."
+            summary={aboutSummary}
           />
         </div>
 

@@ -1,5 +1,10 @@
 import Reveal from '../../shared/motion/Reveal';
+import projects from '../../../../models/Project';
 import SectionHead from '../home/SectionHead';
+
+const appsIn2026 = projects.filter((project) =>
+  project.startDate.endsWith('2026')
+).length;
 
 const milestones = [
   {
@@ -26,6 +31,11 @@ const milestones = [
     year: '2024',
     title: 'Graduated & Full Stack Developer',
     place: 'GPA 3.91 · PT Winni Code Garuda Indonesia',
+  },
+  {
+    year: '2026',
+    title: `Built ${appsIn2026} web apps on my own`,
+    place: 'React, TypeScript, PWA, Vercel',
   },
 ];
 
