@@ -124,6 +124,12 @@ const DetailProject = () => {
             </div>
           )}
 
+          {!demoUrl && !repoUrl && (
+            <p className="detail-project__private">
+              Sistem internal: kode dan demo tidak dipublikasikan.
+            </p>
+          )}
+
           {(demoUrl || repoUrl) && (
             <div className="detail-project__actions">
               {demoUrl && (

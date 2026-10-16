@@ -1,5 +1,18 @@
 const projects: Project[] = [
   {
+    id: 'simrs-sistem-informasi-rumah-sakit',
+    tech: ['Laravel', 'Go', 'PostgreSQL', 'MySQL', 'Blade', 'HL7'],
+    name: 'SIMRS: Sistem Informasi Rumah Sakit',
+    coverImage: '/images/proyek_simrs.webp',
+    startDate: 'Oct 2024',
+    endDate: 'Present',
+    description:
+      'Sistem informasi rumah sakit yang dipakai beberapa rumah sakit, dikerjakan bersama tim di Alfatih Solusindo Technology. Bagian yang saya kerjakan: integrasi enam sistem LIS dan dua alur PACS, modul farmasi dan gizi, laporan admisi dan formulir RL, serta cetakan billing dan invoice. Ini sistem internal perusahaan, jadi tidak ada demo atau kode yang bisa dibuka.',
+    links: '',
+    type: 'Full Stack',
+    insertDate: '2026-10-17T09:00:00.000Z',
+  },
+  {
     id: 'notea-aplikasi-catatan',
     tech: ['React.JS', 'Typescript', 'Redux', 'Tailwind CSS', 'Zod', 'Vitest'],
     name: 'Notea: Aplikasi Catatan',

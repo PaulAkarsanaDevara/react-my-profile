@@ -308,6 +308,15 @@
   margin-top: 24px;
 }
 
+.detail-project__private {
+  margin-top: 24px;
+  padding: 10px 14px;
+  font-size: 13.5px;
+  color: var(--text-muted);
+  border: 1px dashed var(--border-strong);
+  border-radius: 10px;
+}
+
 .detail-related {
   margin-top: 64px;
 }
