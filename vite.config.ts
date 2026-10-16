@@ -125,7 +125,11 @@ const pwa = () =>
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), 'VITE_');
-  const siteUrl = (env.VITE_SITE_URL || '').replace(/\/+$/, '');
+  // VITE_SITE_URL wins; on Vercel fall back to the project's production domain.
+  const vercelHost = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+  const siteUrl = (
+    env.VITE_SITE_URL || (vercelHost ? `https://${vercelHost}` : '')
+  ).replace(/\/+$/, '');
 
   return {
     plugins: [react(), siteMeta(siteUrl), pwa()],
