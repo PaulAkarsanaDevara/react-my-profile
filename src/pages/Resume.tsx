@@ -3,32 +3,34 @@ import { FaDownload, FaEye } from 'react-icons/fa';
 import HTML from '../components/ui/shared/HTML';
 import { MyComponentInstance } from '../components/ui/shared/MyComponent';
 import Reveal from '../components/ui/shared/motion/Reveal';
-import education from '../models/Education';
-import { experience } from '../models/Experience';
-
-const gpa = education.find((edu) => edu.ipk !== '')?.ipk;
-
-const stats = [
-  { value: experience.length, label: 'Experiences' },
-  { value: education.length, label: 'Education' },
-  ...(gpa ? [{ value: gpa, label: 'GPA' }] : []),
-];
+import { useI18n } from '../i18n/useI18n';
+import { useContent } from '../i18n/useContent';
 
 const Resume = () => {
+  const { t } = useI18n();
+  const { education, experience } = useContent();
+  const gpa = education.find((edu) => edu.ipk !== '')?.ipk;
+
+  const stats = [
+    { value: experience.length, label: t('stat.experiences') },
+    { value: education.length, label: t('stat.education') },
+    ...(gpa ? [{ value: gpa, label: t('stat.gpa') }] : []),
+  ];
+
   return (
     <>
       <HTML
         title="Resume - Farhan"
-        description="Resume of Farhan: work experience and education."
+        description={t('meta.resume')}
         keywords="Portofolio, Farhan, Farhan Portofolio"
       />
 
       <div className="resume-container">
         <div className="resume-header">
           <div>
-            <MyComponentInstance.Heading title="Resume" />
+            <MyComponentInstance.Heading title={t('resume.heading')} />
             <p className="resume-header__lead">
-              Where I studied and where I have worked.
+              {t('resume.lead')}
             </p>
           </div>
           <div className="resume-header__actions">
@@ -38,10 +40,10 @@ const Resume = () => {
               download
               className="resume-btn resume-btn--solid"
             >
-              <FaDownload size={13} /> Download CV
+              <FaDownload size={13} /> {t('profile.downloadCv')}
             </Link>
             <Link to="/resume-online" className="resume-btn resume-btn--ghost">
-              <FaEye size={14} /> View Online
+              <FaEye size={14} /> {t('resume.viewOnline')}
             </Link>
           </div>
         </div>
@@ -58,12 +60,12 @@ const Resume = () => {
         </Reveal>
 
         <div className="resume-experience">
-          <h2 className="resume-item__heading">Work Experience</h2>
+          <h2 className="resume-item__heading">{t('resume.work')}</h2>
           <MyComponentInstance.ExperienceListItem />
         </div>
 
         <div className="resume-education">
-          <h2 className="resume-item__heading">Education</h2>
+          <h2 className="resume-item__heading">{t('resume.education')}</h2>
           <MyComponentInstance.EducationItemList />
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { MyComponentInstance } from '../components/ui/shared/MyComponent';
 import HTML from '../components/ui/shared/HTML';
-import { aboutSummary } from '../models/About';
+import { useI18n } from '../i18n/useI18n';
+import { useContent } from '../i18n/useContent';
 import QuickFacts from '../components/ui/v1/about/QuickFacts';
 import WhatIDo from '../components/ui/v1/about/WhatIDo';
 import SkillsTabs from '../components/ui/v1/about/SkillsTabs';
@@ -9,11 +10,14 @@ import SectionHead from '../components/ui/v1/home/SectionHead';
 import HomeCta from '../components/ui/v1/home/HomeCta';
 
 const About = () => {
+  const { t } = useI18n();
+  const { aboutSummary } = useContent();
+
   return (
     <>
       <HTML
         title="About Me - Farhan"
-        description="About Farhan: Informatics graduate and Full Stack Developer. Skills, journey and certificates."
+        description={t('meta.about')}
         keywords="Portofolio, Farhan, Farhan Portofolio"
       />
       <div className="about-container">
@@ -25,7 +29,7 @@ const About = () => {
           />
 
           <MyComponentInstance.ProfileInfoAboutMe
-            headingName="About Me"
+            headingName={t('profile.aboutMe')}
             summary={aboutSummary}
           />
         </div>
@@ -36,7 +40,7 @@ const About = () => {
         <Journey />
 
         <section className="about-section">
-          <SectionHead title="Certifications & Awards" />
+          <SectionHead title={t('certs.title')} />
           <MyComponentInstance.SertifikasiListItem />
         </section>
 

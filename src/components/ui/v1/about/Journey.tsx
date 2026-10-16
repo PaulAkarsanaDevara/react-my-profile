@@ -1,65 +1,41 @@
 import Reveal from '../../shared/motion/Reveal';
 import projects from '../../../../models/Project';
 import SectionHead from '../home/SectionHead';
+import { useI18n } from '../../../../i18n/useI18n';
 
 const appsIn2026 = projects.filter((project) =>
   project.startDate.endsWith('2026')
 ).length;
 
-const milestones = [
-  {
-    year: '2017',
-    title: 'Started vocational school',
-    place: 'SMK 10 November · Computer & Network Engineering',
-  },
-  {
-    year: '2020',
-    title: 'Began Informatics degree',
-    place: 'Universitas Bina Sarana Informatika',
-  },
-  {
-    year: '2022',
-    title: 'Full Stack Developer intern',
-    place: 'PT Solusi Tiga Selaras',
-  },
-  {
-    year: '2023',
-    title: 'Full Stack Developer intern',
-    place: 'PT Citi Asia Internasional · MSIB',
-  },
-  {
-    year: '2024',
-    title: 'Graduated, joined Alfatih Solusindo Technology',
-    place: 'GPA 3.91 · Full Stack Developer',
-  },
-  {
-    year: '2026',
-    title: `Built ${appsIn2026} web apps on my own`,
-    place: 'React, TypeScript, PWA, Vercel',
-  },
-];
+const YEARS = ['2017', '2020', '2022', '2023', '2024', '2026'] as const;
 
-const Journey = () => (
-  <section className="about-section">
-    <SectionHead title="My Journey" to="/resume" linkLabel="Lihat resume" />
-    <div className="journey">
-      {milestones.map((milestone, index) => (
-        <Reveal
-          key={milestone.year}
-          delay={index * 0.06}
-          className="journey__entry"
-        >
-          <div className="journey__item">
-            <span className="journey__year">{milestone.year}</span>
-            <div className="journey__body">
-              <div className="journey__title">{milestone.title}</div>
-              <div className="journey__place">{milestone.place}</div>
+const Journey = () => {
+  const { t } = useI18n();
+
+  return (
+    <section className="about-section">
+      <SectionHead
+        title={t('journey.title')}
+        to="/resume"
+        linkLabel={t('section.seeResume')}
+      />
+      <div className="journey">
+        {YEARS.map((year, index) => (
+          <Reveal key={year} delay={index * 0.06} className="journey__entry">
+            <div className="journey__item">
+              <span className="journey__year">{year}</span>
+              <div className="journey__body">
+                <div className="journey__title">
+                  {t(`journey.${year}.title`, { n: appsIn2026 })}
+                </div>
+                <div className="journey__place">{t(`journey.${year}.place`)}</div>
+              </div>
             </div>
-          </div>
-        </Reveal>
-      ))}
-    </div>
-  </section>
-);
+          </Reveal>
+        ))}
+      </div>
+    </section>
+  );
+};
 
 export default Journey;

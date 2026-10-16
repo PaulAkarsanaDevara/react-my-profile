@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import { FiArrowUp } from 'react-icons/fi';
+import { useI18n } from '../../../../i18n/useI18n';
 
 const SHOW_AFTER = 600;
 
@@ -8,6 +9,7 @@ const SHOW_AFTER = 600;
 const BackToTop = () => {
   const { scrollY } = useScroll();
   const [visible, setVisible] = useState(false);
+  const { t } = useI18n();
 
   useMotionValueEvent(scrollY, 'change', (y) => setVisible(y > SHOW_AFTER));
 
@@ -17,8 +19,8 @@ const BackToTop = () => {
         <motion.button
           type="button"
           className="back-to-top"
-          aria-label="Kembali ke atas"
-          title="Kembali ke atas"
+          aria-label={t('backToTop')}
+          title={t('backToTop')}
           initial={{ opacity: 0, y: 16, scale: 0.8 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 16, scale: 0.8 }}

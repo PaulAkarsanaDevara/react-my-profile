@@ -3,25 +3,28 @@ import { AnimatePresence, motion } from 'framer-motion';
 import skills from '../../../../models/Skill';
 import SkillsItemList from '../skills/SkillsItemList';
 import SectionHead from '../home/SectionHead';
+import { useI18n } from '../../../../i18n/useI18n';
+import type { Key } from '../../../../i18n/locales/en';
 
 const categories = [
-  { key: 'Programming Languages', label: 'Languages' },
-  { key: 'Framework', label: 'Framework' },
-  { key: 'Tools', label: 'Tools' },
+  { key: 'Programming Languages', label: 'skills.languages' as Key },
+  { key: 'Framework', label: 'skills.framework' as Key },
+  { key: 'Tools', label: 'skills.tools' as Key },
 ].map((category) => ({
   ...category,
   items: skills.filter((skill) => skill.category === category.key),
 }));
 
 const SkillsTabs = () => {
+  const { t } = useI18n();
   const [active, setActive] = useState(categories[0].key);
   const current = categories.find((category) => category.key === active)!;
 
   return (
     <section className="about-section">
-      <SectionHead title="Skills" />
+      <SectionHead title={t('skills.title')} />
 
-      <div className="project-filter" role="tablist" aria-label="Kategori skill">
+      <div className="project-filter" role="tablist" aria-label={t('skills.aria')}>
         {categories.map((category) => {
           const isActive = category.key === active;
           return (
@@ -41,7 +44,7 @@ const SkillsTabs = () => {
                 />
               )}
               <span className="project-filter__label">
-                {category.label}
+                {t(category.label)}
                 <span className="project-filter__count">
                   {category.items.length}
                 </span>
@@ -53,16 +56,16 @@ const SkillsTabs = () => {
 
       <div className="skills-legend" aria-hidden="true">
         <span>
-          <i className="skills-level__dot is-on" /> Beginner
+          <i className="skills-level__dot is-on" /> {t('level.Beginner')}
         </span>
         <span>
           <i className="skills-level__dot is-on" />
-          <i className="skills-level__dot is-on" /> Intermediate
+          <i className="skills-level__dot is-on" /> {t('level.Intermediate')}
         </span>
         <span>
           <i className="skills-level__dot is-on" />
           <i className="skills-level__dot is-on" />
-          <i className="skills-level__dot is-on" /> Professional
+          <i className="skills-level__dot is-on" /> {t('level.Professional')}
         </span>
       </div>
 

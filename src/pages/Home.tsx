@@ -1,5 +1,6 @@
 import HTML from '../components/ui/shared/HTML';
-import { aboutSummary } from '../models/About';
+import { useI18n } from '../i18n/useI18n';
+import { useContent } from '../i18n/useContent';
 import { MyComponentInstance } from '../components/ui/shared/MyComponent';
 import HomeStats from '../components/ui/v1/home/HomeStats';
 import TechMarquee from '../components/ui/v1/home/TechMarquee';
@@ -8,11 +9,14 @@ import RecentExperience from '../components/ui/v1/home/RecentExperience';
 import HomeCta from '../components/ui/v1/home/HomeCta';
 
 const Home = () => {
+  const { t } = useI18n();
+  const { aboutSummary } = useContent();
+
   return (
     <>
       <HTML
         title="Home - Farhan"
-        description="Farhan's portfolio: web apps, work experience, skills and certificates."
+        description={t('meta.home')}
         keywords="Portofolio, Farhan, Farhan Portofolio"
       />
       <section className="home-container">
@@ -23,7 +27,7 @@ const Home = () => {
         />
 
         <MyComponentInstance.ProfileInfoAboutMe
-          headingName="About Me"
+          headingName={t('profile.aboutMe')}
           summary={aboutSummary}
         />
       </section>

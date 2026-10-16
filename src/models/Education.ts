@@ -1,7 +1,7 @@
 const education: Education[] = [
   {
     campus: 'UNIVERSITAS BINA SARANA INFORMATIKA',
-    studyName: 'Teknik Informatika',
+    studyName: 'Informatics Engineering',
     startDate: '2020',
     endDate: '2024',
     description:
@@ -10,7 +10,7 @@ const education: Education[] = [
   },
   {
     campus: 'SMK 10 NOVEMBER TAMBUN SELATAN',
-    studyName: 'TEKNIK KOMPUTER & JARINGAN',
+    studyName: 'COMPUTER & NETWORK ENGINEERING',
     startDate: '2017',
     endDate: '2020',
     description:

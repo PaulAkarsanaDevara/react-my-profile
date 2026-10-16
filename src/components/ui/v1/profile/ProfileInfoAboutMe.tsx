@@ -3,10 +3,12 @@ import ProfileHeading from './ProfileHeading';
 import ProfileSummary from './ProfileSummary';
 import { MyComponentInstance } from '../../shared/MyComponent';
 import Reveal from '../../shared/motion/Reveal';
+import { useI18n } from '../../../../i18n/useI18n';
 
 type IProps = { headingName: string; summary: string };
 
 const ProfileInfoAboutme: React.FC<IProps> = ({ summary, headingName }) => {
+  const { t } = useI18n();
   const content = (
     <Reveal>
     <div className="profile-summary">
@@ -17,14 +19,14 @@ const ProfileInfoAboutme: React.FC<IProps> = ({ summary, headingName }) => {
           <MyComponentInstance.ButtonAction
             isBlank={false}
             isDownload={true}
-            name="Download CV"
+            name={t('profile.downloadCv')}
             links="/uploads/CV FARHAN EN.pdf"
             icons=""
           />
           <MyComponentInstance.ButtonAction
             isBlank={false}
             isDownload={false}
-            name="About Me"
+            name={t('profile.aboutMe')}
             links="/me"
             icons=""
           />

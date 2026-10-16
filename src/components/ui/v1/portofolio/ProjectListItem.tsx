@@ -1,11 +1,15 @@
 import * as React from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { MyComponentInstance } from '../../shared/MyComponent';
+import { useI18n } from '../../../../i18n/useI18n';
 import LogoSearchEmpty from '/icons/hand-drawn-no-data-illustration.webp';
 
 type ProjectListItemProps = { items: Project[] };
 
-const ProjectListItem: React.FC<ProjectListItemProps> = ({ items }) => (
+const ProjectListItem: React.FC<ProjectListItemProps> = ({ items }) => {
+  const { t } = useI18n();
+
+  return (
   <>
     {items?.length ? (
       <motion.div className="portofolio-list" layout>
@@ -31,11 +35,12 @@ const ProjectListItem: React.FC<ProjectListItemProps> = ({ items }) => (
       </motion.div>
     ) : (
       <MyComponentInstance.ProjectSearchEmpty
-        text=" Daftar proyek tidak ditemukan!"
+        text={t('portfolio.empty')}
         image={LogoSearchEmpty}
       />
     )}
   </>
-);
+  );
+};
 
 export default ProjectListItem;
