@@ -5,7 +5,7 @@ const experience: Experience[] = [
     location: 'Karawang, Jawa Barat, Indonesia',
     startDate: 'Oct 2024',
     endDate: 'Present',
-    description: `I work on a hospital information system (SIMRS) used by multiple hospitals, built with Laravel and Blade in a large team with a shared codebase. I work across the stack, from database migrations, SQL views and controllers to screens, print layouts and Excel and PDF exports. Most of my work comes from tickets, both new features and fixes.
+    description: `I work on a hospital information system (SIMRS) that several hospitals use every day. It's a Laravel and Blade codebase shared by a large team. I take work from database to screen: migrations and SQL views, controllers, then the pages, print layouts and Excel or PDF exports. Most of my days are tickets, new features and fixes, mostly in the lab, radiology, pharmacy and reports modules.
 - Reports
   - Report builder: in my first months, built a report builder (report types and access control) and the first set of reports on top of it: outpatient admissions, cashier revenue, pharmacy prescriptions, TB-DOTS drug and mask use, marketing demographics and inventory purchasing.
   - Reports module: in 2026, built the admission reports in the new reports module (daily register, visit recap, outpatient visits per clinic, registration queue, census and statistics, inpatient admissions, patient mutation, class upgrades, bed availability, waiting list, new and returning patients, appointments) and a configurable general visits report. Each report is backed by an SQL view with its own migration and menu entry, with filters, an on-screen preview and Excel export.
