@@ -3,16 +3,18 @@ import { motion } from 'framer-motion';
 import { FaArrowLeft } from 'react-icons/fa';
 import AmbientBackground from './motion/AmbientBackground';
 import HTML from './HTML';
+import { useI18n } from '../../../i18n/useI18n';
 
 export default function ErrorPage() {
   const error = useRouteError();
   const notFound = isRouteErrorResponse(error) && error.status === 404;
+  const { t } = useI18n();
 
   return (
     <div id="error-page" className="error-page">
       <HTML
         title={notFound ? '404 - Farhan' : 'Error - Farhan'}
-        description="Halaman tidak ditemukan"
+        description={t('meta.notFound')}
         keywords="Portofolio, Farhan"
       />
       <AmbientBackground />
@@ -24,15 +26,13 @@ export default function ErrorPage() {
       >
         <div className="error-page__code">{notFound ? '404' : 'Oops!'}</div>
         <h1 className="error-page__title">
-          {notFound ? 'Halaman tidak ditemukan' : 'Terjadi kesalahan'}
+          {notFound ? t('error.notFoundTitle') : t('error.title')}
         </h1>
         <p className="error-page__text">
-          {notFound
-            ? 'Halaman yang kamu cari tidak ada atau sudah dipindahkan.'
-            : 'Maaf, terjadi kesalahan yang tidak terduga. Silakan coba lagi.'}
+          {notFound ? t('error.notFoundText') : t('error.text')}
         </p>
         <Link to="/" className="resume-btn resume-btn--solid">
-          <FaArrowLeft size={13} /> Kembali ke Beranda
+          <FaArrowLeft size={13} /> {t('error.home')}
         </Link>
       </motion.div>
     </div>

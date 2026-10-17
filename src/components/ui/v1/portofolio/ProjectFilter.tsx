@@ -1,5 +1,8 @@
 import * as React from 'react';
 import { motion } from 'framer-motion';
+import { useI18n } from '../../../../i18n/useI18n';
+
+const ALL = 'All';
 
 type ProjectFilterProps = {
   types: { name: string; count: number }[];
@@ -11,8 +14,11 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({
   types,
   active,
   onChange,
-}) => (
-  <div className="project-filter" role="tablist" aria-label="Filter proyek">
+}) => {
+  const { t } = useI18n();
+
+  return (
+  <div className="project-filter" role="tablist" aria-label={t('portfolio.filter')}>
     {types.map((type) => {
       const isActive = type.name === active;
       return (
@@ -32,13 +38,14 @@ const ProjectFilter: React.FC<ProjectFilterProps> = ({
             />
           )}
           <span className="project-filter__label">
-            {type.name}
+            {type.name === ALL ? t('portfolio.all') : type.name}
             <span className="project-filter__count">{type.count}</span>
           </span>
         </button>
       );
     })}
   </div>
-);
+  );
+};
 
 export default ProjectFilter;

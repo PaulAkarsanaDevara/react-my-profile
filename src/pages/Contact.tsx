@@ -5,11 +5,14 @@ import { motion } from 'framer-motion';
 import { MyComponentInstance } from '../components/ui/shared/MyComponent';
 import ContactFormInput from '../components/ui/v1/contacts/ContactFormInput';
 import HTML from '../components/ui/shared/HTML';
+import { useI18n } from '../i18n/useI18n';
+import type { Key } from '../i18n/locales/en';
 
 const channels = [
   {
     title: 'WhatsApp',
-    detail: 'Chat langsung',
+    detail: '',
+    detailKey: 'contact.whatsapp' as Key,
     href: 'https://api.whatsapp.com/send/?phone=6282298717364&text&type=phone_number&app_absent=0',
     icon: <FaWhatsapp size={20} />,
   },
@@ -33,6 +36,7 @@ const ChannelCard: React.FC<{ channel: Channel; index: number }> = ({
   channel,
   index,
 }) => {
+  const { t } = useI18n();
   const [copied, setCopied] = useState(false);
 
   const copyLink = async () => {
@@ -61,15 +65,17 @@ const ChannelCard: React.FC<{ channel: Channel; index: number }> = ({
         <span className="contact-channel__icon">{channel.icon}</span>
         <span>
           <span className="contact-channel__title">{channel.title}</span>
-          <span className="contact-channel__detail">{channel.detail}</span>
+          <span className="contact-channel__detail">
+            {channel.detailKey ? t(channel.detailKey) : channel.detail}
+          </span>
         </span>
       </a>
       <button
         type="button"
         className="contact-channel__copy"
         onClick={copyLink}
-        aria-label={`Salin link ${channel.title}`}
-        title={copied ? 'Tersalin!' : 'Salin link'}
+        aria-label={t('contact.copyAria', { title: channel.title })}
+        title={copied ? t('contact.copied') : t('contact.copy')}
       >
         {copied ? <FiCheck size={16} /> : <FiCopy size={16} />}
       </button>
@@ -78,15 +84,17 @@ const ChannelCard: React.FC<{ channel: Channel; index: number }> = ({
 };
 
 const Contact: React.FC = () => {
+  const { t } = useI18n();
+
   return (
     <>
       <HTML
         title="Contact - Farhan"
-        description="Get in touch with Farhan about projects, questions or work."
+        description={t('meta.contact')}
         keywords="Portofolio, Farhan, Farhan Portofolio"
       />
       <div className="contacts-container">
-        <MyComponentInstance.Heading title="Contact Me" />
+        <MyComponentInstance.Heading title={t('contact.heading')} />
         <hr className="text-secondary" />
 
         <div className="contact-layout">
@@ -96,9 +104,9 @@ const Contact: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
-            <h2 className="contact-info__title">Get in touch</h2>
+            <h2 className="contact-info__title">{t('contact.title')}</h2>
             <p className="contact-info__lead">
-              Ada proyek, pertanyaan, atau sekadar mau ngobrol? Kirim pesan lewat form, atau hubungi saya di salah satu kanal ini.
+              {t('contact.lead')}
             </p>
 
             <div className="contact-info__channels">
@@ -108,7 +116,7 @@ const Contact: React.FC = () => {
             </div>
 
             <p className="contact-info__note">
-              Pesan dari form dikirim langsung ke email saya.
+              {t('contact.note')}
             </p>
           </motion.div>
 

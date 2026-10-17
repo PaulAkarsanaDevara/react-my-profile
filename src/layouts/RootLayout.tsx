@@ -8,14 +8,16 @@ import ScrollProgress from '../components/ui/shared/motion/ScrollProgress';
 import MobileTabBar from '../components/ui/shared/navbar/MobileTabBar';
 import { useSpotlight } from '../hooks/useSpotlight';
 import BackToTop from '../components/ui/shared/motion/BackToTop';
+import { useI18n } from '../i18n/useI18n';
 
 const RootLayout: React.FC = () => {
   useSpotlight();
+  const { t } = useI18n();
 
   return (
     <MotionConfig reducedMotion="user">
       <a className="skip-link" href="#main-content">
-        Lewati ke konten
+        {t('skip')}
       </a>
       <AmbientBackground />
       <ScrollProgress />

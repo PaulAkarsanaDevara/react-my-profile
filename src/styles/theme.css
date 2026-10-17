@@ -1262,3 +1262,24 @@ textarea:focus-visible {
   font-size: 20px;
   font-weight: 800;
 }
+
+/* Give the hero avatar room: the glow was clipped by overflow:hidden and the
+   ring sat too close to the navbar and the name. */
+.home-container,
+.about-container,
+.about-profile-container {
+  overflow: visible;
+}
+.home-container,
+.about-profile-container {
+  padding-top: 32px;
+}
+.profile-info-bio__avatar {
+  margin: 0 auto 22px;
+}
+@media (max-width: 575.98px) {
+  .home-container,
+  .about-profile-container {
+    padding-top: 20px;
+  }
+}

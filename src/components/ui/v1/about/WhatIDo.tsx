@@ -18,11 +18,13 @@ import {
 import { FaCode, FaServer, FaCogs } from 'react-icons/fa';
 import Reveal from '../../shared/motion/Reveal';
 import SectionHead from '../home/SectionHead';
+import { useI18n } from '../../../../i18n/useI18n';
+import type { Key } from '../../../../i18n/locales/en';
 
 type Service = {
   icon: JSX.Element;
   title: string;
-  text: string;
+  text: Key;
   tech: { name: string; Icon: IconType }[];
 };
 
@@ -30,7 +32,7 @@ const services: Service[] = [
   {
     icon: <FaCode size={20} />,
     title: 'Frontend',
-    text: 'The part you see and click. Mostly React these days.',
+    text: 'whatIDo.frontend',
     tech: [
       { name: 'React', Icon: SiReact },
       { name: 'Vue', Icon: SiVuedotjs },
@@ -41,7 +43,7 @@ const services: Service[] = [
   {
     icon: <FaServer size={19} />,
     title: 'Backend',
-    text: 'The server side and the database. Mostly Laravel and Go these days.',
+    text: 'whatIDo.backend',
     tech: [
       { name: 'Laravel', Icon: SiLaravel },
       { name: 'Go', Icon: SiGo },
@@ -54,7 +56,7 @@ const services: Service[] = [
   {
     icon: <FaCogs size={19} />,
     title: 'DevOps',
-    text: 'Packaging and deploying apps with Docker, Jenkins and Kubernetes. Still learning.',
+    text: 'whatIDo.devops',
     tech: [
       { name: 'Docker', Icon: SiDocker },
       { name: 'Kubernetes', Icon: SiKubernetes },
@@ -64,16 +66,19 @@ const services: Service[] = [
   },
 ];
 
-const WhatIDo = () => (
+const WhatIDo = () => {
+  const { t } = useI18n();
+
+  return (
   <section className="about-section">
-    <SectionHead title="What I Do" />
+    <SectionHead title={t('whatIDo.title')} />
     <div className="service-grid">
       {services.map((service, index) => (
         <Reveal key={service.title} delay={index * 0.1} className="service-cell">
           <div className="service-card">
             <span className="service-card__icon">{service.icon}</span>
             <h3 className="service-card__title">{service.title}</h3>
-            <p className="service-card__text">{service.text}</p>
+            <p className="service-card__text">{t(service.text)}</p>
             <ul className="service-card__tech">
               {service.tech.map(({ name, Icon }) => (
                 <li key={name}>
@@ -86,6 +91,7 @@ const WhatIDo = () => (
       ))}
     </div>
   </section>
-);
+  );
+};
 
 export default WhatIDo;

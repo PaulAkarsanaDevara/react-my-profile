@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { FaArrowRight, FaBriefcase, FaMapMarkerAlt } from 'react-icons/fa';
 import { FiChevronDown } from 'react-icons/fi';
+import { useI18n } from '../../../../i18n/useI18n';
 
 type ExperienceItemProps = Experience & {
   /** Short version for Home: intro + top bullets, no details, link to Resume. */
@@ -54,6 +55,7 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({
   compact = false,
   defaultOpen = true,
 }) => {
+  const { t } = useI18n();
   const { paragraph, bullets } = splitDescription(description);
   const groupIndexes = bullets
     .map((item, index) => (item.children.length > 0 ? index : -1))
@@ -106,7 +108,7 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({
               className="timeline-card__tool-btn"
               onClick={toggleAll}
             >
-              {allOpen ? 'Collapse all' : 'Expand all'}
+              {allOpen ? t('exp.collapseAll') : t('exp.expandAll')}
             </button>
           </div>
         )}
@@ -169,7 +171,7 @@ const ExperienceItem: React.FC<ExperienceItemProps> = ({
 
         {compact && hasMore && (
           <Link to="/resume" className="timeline-card__more">
-            Lihat selengkapnya <FaArrowRight size={11} />
+            {t('exp.seeMore')} <FaArrowRight size={11} />
           </Link>
         )}
       </div>

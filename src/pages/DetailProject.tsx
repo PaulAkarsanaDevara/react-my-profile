@@ -6,7 +6,8 @@ import {
   FaGithub,
 } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import projects from '../models/Project';
+import { useContent } from '../i18n/useContent';
+import { useI18n } from '../i18n/useI18n';
 import { postedAt } from '../utils/formattedDate';
 import { MyComponentInstance } from '../components/ui/shared/MyComponent';
 import Reveal from '../components/ui/shared/motion/Reveal';
@@ -19,6 +20,8 @@ const isRepo = (url: string) => /^https?:\/\/(www\.)?github\.com\//i.test(url);
 
 const DetailProject = () => {
   const { id } = useParams();
+  const { projects } = useContent();
+  const { t } = useI18n();
 
   const index = projects.findIndex((project) => project.id === id);
   const detailProject: Project | undefined = projects[index];
@@ -26,12 +29,12 @@ const DetailProject = () => {
   if (!detailProject) {
     return (
       <section className="detailproject-section detail-empty">
-        <h1 className="detail-empty__title">Proyek tidak ditemukan</h1>
+        <h1 className="detail-empty__title">{t('detail.notFoundTitle')}</h1>
         <p className="detail-empty__text">
-          Proyek yang kamu cari tidak tersedia atau tautannya sudah kedaluwarsa.
+          {t('detail.notFoundText')}
         </p>
         <Link to="/portfolio" className="resume-btn resume-btn--solid">
-          <FaArrowLeft size={13} /> Kembali ke Portfolio
+          <FaArrowLeft size={13} /> {t('detail.back')}
         </Link>
       </section>
     );
@@ -64,7 +67,7 @@ const DetailProject = () => {
       />
 
       <Link to="/portfolio" className="detail-back">
-        <FaArrowLeft size={12} /> Kembali ke Portfolio
+        <FaArrowLeft size={12} /> {t('detail.back')}
       </Link>
 
       <div className="detail-project-container">
@@ -97,20 +100,19 @@ const DetailProject = () => {
                 : `${detailProject.startDate} – ${detailProject.endDate}`}
             </span>
             <span className="timeline-chip">
-              {postedAt({ date: detailProject.insertDate })}
+              {postedAt({ date: detailProject.insertDate, t })}
             </span>
           </div>
 
           <h1 className="detail-project__title">{detailProject.name}</h1>
 
           <div className="detail-project__content-description">
-            {detailProject.description ||
-              'Belum ada deskripsi untuk proyek ini.'}
+            {detailProject.description || t('detail.noDescription')}
           </div>
 
           {detailProject.tech && detailProject.tech.length > 0 && (
             <div className="detail-project__tech">
-              <div className="detail-project__tech-label">Tech stack</div>
+              <div className="detail-project__tech-label">{t('detail.techStack')}</div>
               <ul className="service-card__tech">
                 {detailProject.tech.map((name) => {
                   const icon = techIcons[name];
@@ -124,6 +126,12 @@ const DetailProject = () => {
             </div>
           )}
 
+          {!demoUrl && !repoUrl && (
+            <p className="detail-project__private">
+              {t('detail.private')}
+            </p>
+          )}
+
           {(demoUrl || repoUrl) && (
             <div className="detail-project__actions">
               {demoUrl && (
@@ -133,7 +141,7 @@ const DetailProject = () => {
                   rel="noreferrer"
                   className="resume-btn resume-btn--solid"
                 >
-                  Buka Demo <FaExternalLinkAlt size={12} />
+                  {t('detail.demo')} <FaExternalLinkAlt size={12} />
                 </a>
               )}
               {repoUrl && (
@@ -143,7 +151,7 @@ const DetailProject = () => {
                   rel="noreferrer"
                   className={`resume-btn ${demoUrl ? 'resume-btn--ghost' : 'resume-btn--solid'}`}
                 >
-                  <FaGithub size={15} /> Lihat Kode
+                  <FaGithub size={15} /> {t('detail.code')}
                 </a>
               )}
             </div>
@@ -151,14 +159,14 @@ const DetailProject = () => {
         </motion.div>
       </div>
 
-      <nav className="detail-pager" aria-label="Navigasi proyek">
+      <nav className="detail-pager" aria-label={t('detail.nav')}>
         {previous ? (
           <Link
             to={`/porto/${previous.id}/project`}
             className="detail-pager__link"
           >
             <span className="detail-pager__dir">
-              <FaArrowLeft size={11} /> Sebelumnya
+              <FaArrowLeft size={11} /> {t('detail.prev')}
             </span>
             <span className="detail-pager__name">{previous.name}</span>
           </Link>
@@ -171,7 +179,7 @@ const DetailProject = () => {
             className="detail-pager__link detail-pager__link--next"
           >
             <span className="detail-pager__dir">
-              Berikutnya <FaArrowRight size={11} />
+              {t('detail.next')} <FaArrowRight size={11} />
             </span>
             <span className="detail-pager__name">{next.name}</span>
           </Link>
@@ -183,7 +191,7 @@ const DetailProject = () => {
       {related.length > 0 && (
         <div className="detail-related">
           <h2 className="resume-item__heading">
-            Proyek {detailProject.type} Lainnya
+            {t('detail.related', { type: detailProject.type })}
           </h2>
           <div className="portofolio-list">
             {related.map((project, relatedIndex) => (

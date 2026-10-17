@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { FaCheck, FaPaperPlane } from 'react-icons/fa';
 import { FiAlertCircle, FiMail, FiMessageSquare, FiUser } from 'react-icons/fi';
 import emailjs from 'emailjs-com';
+import { useI18n } from '../../../../i18n/useI18n';
 
 interface IFormInput {
   name: string;
@@ -15,13 +16,14 @@ interface IFormInput {
   website: string;
 }
 
-const TOPICS = ['Proyek', 'Pekerjaan', 'Pertanyaan', 'Lainnya'];
+const TOPICS = ['project', 'work', 'question', 'other'] as const;
 const MAX_MESSAGE = 1000;
 
 type Status = 'idle' | 'sent' | 'error';
 
 const ContactFormInput: React.FC = () => {
-  const [topic, setTopic] = useState(TOPICS[0]);
+  const { t } = useI18n();
+  const [topic, setTopic] = useState<(typeof TOPICS)[number]>(TOPICS[0]);
   const [status, setStatus] = useState<Status>('idle');
   const {
     register,
@@ -44,13 +46,14 @@ const ContactFormInput: React.FC = () => {
     const emailJsServiceId: string = import.meta.env.VITE_EMAILJS_SERVICE_ID;
     const emailJsTemplateId: string = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
     const { name, email, message } = data;
+    const topicLabel = t(`contact.topic.${topic}`);
     const emailInputData = {
       name,
       to_name: 'Farhan',
       from_name: name,
       email,
-      topic,
-      message: `[${topic}] ${message}`,
+      topic: topicLabel,
+      message: `[${topicLabel}] ${message}`,
     };
 
     try {
@@ -105,17 +108,16 @@ const ContactFormInput: React.FC = () => {
           >
             <FaCheck size={26} />
           </motion.span>
-          <h3 className="contact-success__title">Pesan terkirim!</h3>
+          <h3 className="contact-success__title">{t('contact.sentTitle')}</h3>
           <p className="contact-success__text">
-            Terima kasih sudah menghubungi. Saya akan membalas secepatnya lewat
-            email yang kamu isi.
+            {t('contact.sentText')}
           </p>
           <button
             type="button"
             className="resume-btn resume-btn--ghost"
             onClick={sendAnother}
           >
-            Kirim pesan lain
+            {t('contact.sendAnother')}
           </button>
         </motion.div>
       ) : (
@@ -132,8 +134,8 @@ const ContactFormInput: React.FC = () => {
             noValidate
           >
             <div className="contact-topic">
-              <div className="contact-forminput-group__label">Topik</div>
-              <div className="contact-topic__chips" role="radiogroup" aria-label="Topik pesan">
+              <div className="contact-forminput-group__label">{t('contact.topic')}</div>
+              <div className="contact-topic__chips" role="radiogroup" aria-label={t('contact.topicAria')}>
                 {TOPICS.map((item) => (
                   <button
                     key={item}
@@ -143,20 +145,20 @@ const ContactFormInput: React.FC = () => {
                     className={`contact-topic__chip${topic === item ? ' is-active' : ''}`}
                     onClick={() => setTopic(item)}
                   >
-                    {item}
+                    {t(`contact.topic.${item}`)}
                   </button>
                 ))}
               </div>
             </div>
 
             <Form.Group className="contact-forminput-group" controlId="contact-name">
-              <Form.Label className="contact-forminput-group__label">Nama</Form.Label>
+              <Form.Label className="contact-forminput-group__label">{t('contact.name')}</Form.Label>
               <div className="contact-field">
                 <FiUser className="contact-field__icon" size={17} aria-hidden />
                 <Form.Control
                   className="contact-forminput-group__input"
                   type="text"
-                  placeholder="Nama lengkap"
+                  placeholder={t('contact.namePlaceholder')}
                   autoComplete="name"
                   {...register('name', { required: true })}
                   aria-invalid={errors.name ? 'true' : 'false'}
@@ -164,7 +166,7 @@ const ContactFormInput: React.FC = () => {
                 />
               </div>
               <Form.Control.Feedback type="invalid" className={errors.name ? 'd-block' : ''}>
-                {errors.name && 'Bidang ini tidak boleh kosong'}
+                {errors.name && t('contact.required')}
               </Form.Control.Feedback>
             </Form.Group>
 
@@ -175,7 +177,7 @@ const ContactFormInput: React.FC = () => {
                 <Form.Control
                   className="contact-forminput-group__input"
                   type="email"
-                  placeholder="nama@email.com"
+                  placeholder={t('contact.emailPlaceholder')}
                   autoComplete="email"
                   {...register('email', {
                     required: true,
@@ -188,19 +190,19 @@ const ContactFormInput: React.FC = () => {
               <Form.Control.Feedback type="invalid" className={errors.email ? 'd-block' : ''}>
                 {errors.email &&
                   (errors.email.type === 'pattern'
-                    ? 'Format email tidak valid'
-                    : 'Bidang ini tidak boleh kosong')}
+                    ? t('contact.emailInvalid')
+                    : t('contact.required'))}
               </Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group className="contact-forminput-group" controlId="contact-message">
-              <Form.Label className="contact-forminput-group__label">Pesan</Form.Label>
+              <Form.Label className="contact-forminput-group__label">{t('contact.message')}</Form.Label>
               <div className="contact-field contact-field--textarea">
                 <FiMessageSquare className="contact-field__icon" size={17} aria-hidden />
                 <Form.Control
                   className="contact-forminput-group__textarea"
                   as="textarea"
-                  placeholder="Ceritakan kebutuhanmu..."
+                  placeholder={t('contact.messagePlaceholder')}
                   onKeyDown={submitOnShortcut}
                   {...register('message', {
                     required: true,
@@ -215,13 +217,13 @@ const ContactFormInput: React.FC = () => {
                 <Form.Control.Feedback type="invalid" className={`m-0 ${errors.message ? 'd-block' : ''}`}>
                   {errors.message &&
                     (errors.message.type === 'minLength'
-                      ? 'Pesan terlalu pendek (minimal 10 karakter)'
+                      ? t('contact.tooShort')
                       : errors.message.type === 'maxLength'
-                        ? `Pesan maksimal ${MAX_MESSAGE} karakter`
-                        : 'Bidang ini tidak boleh kosong')}
+                        ? t('contact.tooLong', { max: MAX_MESSAGE })
+                        : t('contact.required'))}
                 </Form.Control.Feedback>
                 {!errors.message && (
-                  <span className="contact-meta__hint">Ctrl + Enter untuk kirim</span>
+                  <span className="contact-meta__hint">{t('contact.shortcut')}</span>
                 )}
                 <span
                   className={`contact-meta__count${messageLength > MAX_MESSAGE ? ' is-over' : ''}`}
@@ -245,7 +247,7 @@ const ContactFormInput: React.FC = () => {
               <div className="contact-error" role="alert">
                 <FiAlertCircle size={18} />
                 <span>
-                  Pesan belum terkirim. Periksa koneksi lalu coba lagi.
+                  {t('contact.error')}
                 </span>
               </div>
             )}
@@ -256,7 +258,7 @@ const ContactFormInput: React.FC = () => {
               className="contact-forminput-button"
             >
               <FaPaperPlane size={14} />
-              {isSubmitting ? 'Mengirim...' : 'Kirimkan'}
+              {isSubmitting ? t('contact.sending') : t('contact.send')}
             </button>
           </Form>
         </motion.div>

@@ -308,6 +308,15 @@
   margin-top: 24px;
 }
 
+.detail-project__private {
+  margin-top: 24px;
+  padding: 10px 14px;
+  font-size: 13.5px;
+  color: var(--text-muted);
+  border: 1px dashed var(--border-strong);
+  border-radius: 10px;
+}
+
 .detail-related {
   margin-top: 64px;
 }
@@ -527,4 +536,12 @@
   font-size: 14.5px;
   font-weight: 700;
   line-height: 1.4;
+}
+
+.sertifikasi-modal-image {
+  display: block;
+  max-width: min(100%, 720px);
+  height: auto;
+  margin: 0 auto;
+  border-radius: 12px;
 }

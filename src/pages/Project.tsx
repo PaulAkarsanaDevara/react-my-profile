@@ -3,21 +3,26 @@ import { useSearchParams } from 'react-router-dom';
 import { MyComponentInstance } from '../components/ui/shared/MyComponent';
 import ProjectFilter from '../components/ui/v1/portofolio/ProjectFilter';
 import HTML from '../components/ui/shared/HTML';
-import projects from '../models/Project';
+import { useI18n } from '../i18n/useI18n';
+import { useContent } from '../i18n/useContent';
 
 const ALL = 'All';
 
-const types = [
-  { name: ALL, count: projects.length },
-  ...Array.from(new Set(projects.map((project) => project.type))).map(
-    (name) => ({
-      name,
-      count: projects.filter((project) => project.type === name).length,
-    })
-  ),
-];
-
 const Project: React.FC = () => {
+  const { t } = useI18n();
+  const { projects } = useContent();
+  const types = useMemo(
+    () => [
+      { name: ALL, count: projects.length },
+      ...Array.from(new Set(projects.map((project) => project.type))).map(
+        (name) => ({
+          name,
+          count: projects.filter((project) => project.type === name).length,
+        })
+      ),
+    ],
+    [projects]
+  );
   const [searchParams, setSearchParams] = useSearchParams();
   const keyword = searchParams.get('search') || '';
   const requestedType = searchParams.get('type') || ALL;
@@ -43,27 +48,26 @@ const Project: React.FC = () => {
             text.toLowerCase().includes(keyword.toLowerCase())
           )
       ),
-    [keyword, type]
+    [keyword, type, projects]
   );
 
   return (
     <>
       <HTML
         title="Portfolio - Farhan"
-        description="Web apps and projects by Farhan, from personal apps to course work."
+        description={t('meta.portfolio')}
         keywords="Portofolio, Farhan, Farhan Portofolio"
       />
 
       <div className="portofolio-container ">
-        <MyComponentInstance.Heading title="Project" />
+        <MyComponentInstance.Heading title={t('portfolio.heading')} />
         <p className="project-lead">
-          Proyek yang pernah saya bikin, dari aplikasi sendiri sampai tugas
-          kursus.
+          {t('portfolio.lead')}
         </p>
         <hr className="text-secondary" />
 
         <MyComponentInstance.ProjectSearchInput
-          placeholder="Cari proyek atau teknologi..."
+          placeholder={t('portfolio.search')}
           keyword={keyword}
           keywordChange={(value) => updateParams({ search: value })}
         />
@@ -75,7 +79,7 @@ const Project: React.FC = () => {
             onChange={(next) => updateParams({ type: next })}
           />
           <div className="project-toolbar__count" aria-live="polite">
-            {items.length} proyek
+            {t('portfolio.count', { n: items.length })}
           </div>
         </div>
 

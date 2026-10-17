@@ -1,16 +1,20 @@
-import { experience } from '../../../../models/Experience';
 import ExperienceItem from '../experience/ExperienceItem';
 import Reveal from '../../shared/motion/Reveal';
 import SectionHead from './SectionHead';
+import { useContent } from '../../../../i18n/useContent';
+import { useI18n } from '../../../../i18n/useI18n';
 
-const recent = experience.slice(0, 2);
+const RecentExperience = () => {
+  const { experience } = useContent();
+  const { t } = useI18n();
+  const recent = experience.slice(0, 2);
 
-const RecentExperience = () => (
+  return (
   <section className="home-section">
     <SectionHead
-      title="Recent Experience"
+      title={t('section.recentExperience')}
       to="/resume"
-      linkLabel="Lihat resume"
+      linkLabel={t('section.seeResume')}
     />
     <div className="timeline">
       {recent.map((item, index) => (
@@ -20,6 +24,7 @@ const RecentExperience = () => (
       ))}
     </div>
   </section>
-);
+  );
+};
 
 export default RecentExperience;

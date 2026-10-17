@@ -1,9 +1,9 @@
-import { experience } from '../../../../models/Experience';
+import { useContent } from '../../../../i18n/useContent';
 import ExperienceItem from './ExperienceItem';
 import Reveal from '../../shared/motion/Reveal';
 
 const ExperienceListItem = () => {
-  const items: Experience[] = experience;
+  const items: Experience[] = useContent().experience;
 
   return (
     <div className="timeline">

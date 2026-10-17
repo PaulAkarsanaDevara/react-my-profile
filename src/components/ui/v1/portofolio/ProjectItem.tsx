@@ -3,6 +3,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Link } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
 import { postedAt } from '../../../../utils/formattedDate';
+import { useI18n } from '../../../../i18n/useI18n';
 
 type ProjectItemProps = Project;
 
@@ -13,7 +14,10 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
   description,
   insertDate,
   type,
-}) => (
+}) => {
+  const { t } = useI18n();
+
+  return (
   <div className="portofolio-list__items ">
     {type && <span className="portofolio-list__items-type">{type}</span>}
     <Link to={`/porto/${id}/project`} className="portofolio-list__items-image-wrap">
@@ -27,18 +31,19 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
     </Link>
 
     <div className="portofolio-list__items-date">
-      {postedAt({ date: insertDate })}
+      {postedAt({ date: insertDate, t })}
     </div>
     <div className="portofolio-list__items-name">{name}</div>
     <div className="portofolio-list__items-description">{description}</div>
     <Link
       to={`/porto/${id}/project`}
       className="portofolio-list__items-more"
-      aria-label={`Lihat detail ${name}`}
+      aria-label={t('portfolio.detailsOf', { name })}
     >
-      Lihat detail <FaArrowRight size={11} />
+      {t('portfolio.details')} <FaArrowRight size={11} />
     </Link>
   </div>
-);
+  );
+};
 
 export default ProjectItem;

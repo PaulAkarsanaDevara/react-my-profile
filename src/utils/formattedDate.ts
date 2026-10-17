@@ -1,60 +1,27 @@
+import type { I18nValue } from '../i18n/context';
+
 interface FormatDate {
   date: string;
-}
-interface GetTimeAgo {
-  diffYears: number;
-  diffMonths: number;
-  diffWeeks: number;
-  diffDays: number;
-  diffHours: number;
-  diffMinutes: number;
+  t: I18nValue['t'];
 }
 
-const getTimeAgo = ({
-  diffYears,
-  diffMonths,
-  diffWeeks,
-  diffDays,
-  diffHours,
-  diffMinutes,
-}: GetTimeAgo): string => {
-  switch (true) {
-    case diffYears > 0:
-      return `${diffYears} tahun yang lalu`;
-    case diffMonths > 0:
-      return `${diffMonths} bulan yang lalu`;
-    case diffWeeks > 0:
-      return `${diffWeeks} minggu yang lalu`;
-    case diffDays > 0:
-      return `${diffDays} hari yang lalu`;
-    case diffHours > 0:
-      return `${diffHours} jam yang lalu`;
-    case diffMinutes > 0:
-      return `${diffMinutes} menit yang lalu`;
-    default:
-      return 'Baru saja';
-  }
-};
+/** "2 days ago" style text for a date, in the language `t` translates to. */
+const postedAt = ({ date, t }: FormatDate): string => {
+  const diff = Date.now() - new Date(date).getTime();
+  const minutes = Math.floor(diff / (1000 * 60));
+  const hours = Math.floor(diff / (1000 * 60 * 60));
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const weeks = Math.floor(days / 7);
+  const months = Math.floor(days / 30); // average 30 days per month
+  const years = Math.floor(days / 365); // average 365 days per year
 
-const postedAt = ({ date }: FormatDate): string => {
-  const now = new Date() as Date;
-  const posted = new Date(date) as Date;
-  const diff = (now.getTime() - posted.getTime()) as number;
-  const diffMinutes = Math.floor(diff / (1000 * 60)) as number;
-  const diffHours = Math.floor(diff / (1000 * 60 * 60)) as number;
-  const diffDays = Math.floor(diff / (1000 * 60 * 60 * 24)) as number;
-  const diffWeeks = Math.floor(diffDays / 7) as number;
-  const diffMonths = Math.floor(diffDays / 30) as number; // Rata-rata 30 hari per bulan
-  const diffYears = Math.floor(diffDays / 365) as number; // Rata-rata 365 hari per tahun
-
-  return getTimeAgo({
-    diffYears,
-    diffMonths,
-    diffWeeks,
-    diffDays,
-    diffHours,
-    diffMinutes,
-  });
+  if (years > 0) return t('ago.year', { n: years });
+  if (months > 0) return t('ago.month', { n: months });
+  if (weeks > 0) return t('ago.week', { n: weeks });
+  if (days > 0) return t('ago.day', { n: days });
+  if (hours > 0) return t('ago.hour', { n: hours });
+  if (minutes > 0) return t('ago.minute', { n: minutes });
+  return t('ago.now');
 };
 
 export { postedAt };

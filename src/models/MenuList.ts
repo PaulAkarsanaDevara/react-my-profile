@@ -24,4 +24,13 @@ const menuListItem: MenuItem[] = [
   },
 ];
 
-export { menuListItem };
+/** Translation key for each menu entry, by route. */
+const menuLabelKeys = {
+  '/': 'nav.home',
+  '/me': 'nav.about',
+  '/resume': 'nav.resume',
+  '/portfolio': 'nav.portfolio',
+  '/contact': 'nav.contact',
+} as const;
+
+export { menuListItem, menuLabelKeys };
