@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Suspense, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useLocation, useOutlet } from 'react-router-dom';
+import PageErrorBoundary from '../PageErrorBoundary';
+import PageLoader from '../PageLoader';
 
 /**
  * Animates route changes. useOutlet is frozen per-location so the exiting
@@ -24,7 +26,9 @@ const PageTransition: React.FC = () => {
         exit={{ opacity: 0, y: -16, filter: 'blur(6px)' }}
         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
       >
-        <Suspense fallback={null}>{outlet}</Suspense>
+        <PageErrorBoundary>
+          <Suspense fallback={<PageLoader />}>{outlet}</Suspense>
+        </PageErrorBoundary>
       </motion.div>
     </AnimatePresence>
   );

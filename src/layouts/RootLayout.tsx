@@ -8,6 +8,7 @@ import ScrollProgress from '../components/ui/shared/motion/ScrollProgress';
 import MobileTabBar from '../components/ui/shared/navbar/MobileTabBar';
 import { useSpotlight } from '../hooks/useSpotlight';
 import BackToTop from '../components/ui/shared/motion/BackToTop';
+import UpdatePrompt from '../components/ui/shared/UpdatePrompt';
 import { useI18n } from '../i18n/useI18n';
 
 const RootLayout: React.FC = () => {
@@ -38,6 +39,7 @@ const RootLayout: React.FC = () => {
       </Suspense>
       <BackToTop />
       <MobileTabBar />
+      <UpdatePrompt />
     </MotionConfig>
   );
 };

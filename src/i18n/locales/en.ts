@@ -171,6 +171,12 @@ export const en = {
   'error.title': 'Something went wrong',
   'error.text': 'Sorry, something unexpected happened. Please try again.',
   'error.home': 'Back to Home',
+  'error.reload': 'Reload page',
+
+  // PWA update
+  'update.text': 'A new version is available.',
+  'update.action': 'Update',
+  'update.dismiss': 'Later',
 } as const;
 
 export type Key = keyof typeof en;

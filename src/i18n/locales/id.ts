@@ -173,4 +173,10 @@ export const id: Record<Key, string> = {
   'error.title': 'Terjadi kesalahan',
   'error.text': 'Maaf, terjadi kesalahan yang tidak terduga. Silakan coba lagi.',
   'error.home': 'Kembali ke Beranda',
+  'error.reload': 'Muat ulang halaman',
+
+  // PWA update
+  'update.text': 'Versi baru tersedia.',
+  'update.action': 'Perbarui',
+  'update.dismiss': 'Nanti',
 };

@@ -39,7 +39,7 @@ const siteMeta = (siteUrl: string): Plugin => ({
  */
 const pwa = () =>
   VitePWA({
-    registerType: 'autoUpdate',
+    registerType: 'prompt',
     includeAssets: ['favicon.svg', 'icons/apple-touch-icon.png'],
     manifest: {
       name: 'Farhan — Full Stack Developer',
